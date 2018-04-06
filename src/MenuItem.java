@@ -24,6 +24,7 @@ public class MenuItem {
                 case "4":
                     RoomOperation.enterRoom();
                     printinfoMenu();
+                    break;
                 case "999":
                     MainMenu.printItem();
                     return;
