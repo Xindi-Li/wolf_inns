@@ -13,7 +13,10 @@ public class MenuItem {
                     HotelOperation.enterHotel();
                     printinfoMenu();
                     break;
-                case "5":
+                case "4":
+                    RoomOperation.enterRoom();
+                    printinfoMenu();
+                case "999":
                     MainMenu.printItem();
                     return;
             }
@@ -26,7 +29,9 @@ public class MenuItem {
         System.out.println("2. Update a hotel");
         System.out.println("3. Delete a hotel");
         System.out.println("4. Enter a new room");
-        System.out.println("5. Go to the main menu");
+        System.out.println("5. Update a room");
+        System.out.println("6. Delete a room");
+        System.out.println("999. Go to the main menu");
         System.out.println("=====================================");
     }
 
