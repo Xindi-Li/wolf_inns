@@ -52,6 +52,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Availability: ");
+            input = sc.next();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
         }
