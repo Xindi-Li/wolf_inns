@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class MenuItem {
-    public static void infoProcessing(){
+    public static void infoProcessing() {
         System.out.println("1. Enter a new hotel");
         System.out.println("2. Update a hotel");
         System.out.println("3. Delete a hotel");
@@ -18,5 +18,17 @@ public class MenuItem {
                     return;
             }
         }
+    }
+
+    public static void maintainSerRecord() {
+
+    }
+
+    public static void maintainBill() {
+
+    }
+
+    public static void report() {
+
     }
 }
