@@ -34,11 +34,13 @@ public class MainMenu {
     }
 
     public static void printItem() {
+        System.out.println("=====================================");
         System.out.println("Welcome to Wolf Inns Database System");
         System.out.println("1. Information Processing");
         System.out.println("2. Maintaining Service Records");
         System.out.println("3. Maintaining billing accounts");
         System.out.println("4. Reports");
         System.out.println("5. Exit");
+        System.out.println("=====================================");
     }
 }
