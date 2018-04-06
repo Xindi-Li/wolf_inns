@@ -13,6 +13,14 @@ public class MenuItem {
                     HotelOperation.enterHotel();
                     printinfoMenu();
                     break;
+                case "2":
+                    HotelOperation.updateHotel();
+                    printinfoMenu();
+                    break;
+                case "3":
+                    HotelOperation.deleteHotel();
+                    printinfoMenu();
+                    break;
                 case "4":
                     RoomOperation.enterRoom();
                     printinfoMenu();

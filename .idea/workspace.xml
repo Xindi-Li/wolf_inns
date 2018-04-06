@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90ccf647-f10e-4c76-8d96-54c3f9a84397" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+>>>>>>> c9a82565bf69fc419851c79dbdbc369750eee238
       <change beforePath="$PROJECT_DIR$/src/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuItem.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,6 +40,7 @@
       <file leaf-file-name="MenuItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MenuItem.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="240">
               <caret line="16" column="43" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="43" />
             </state>
@@ -51,6 +55,10 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="420">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+>>>>>>> c9a82565bf69fc419851c79dbdbc369750eee238
             </state>
           </provider>
         </entry>
@@ -58,11 +66,25 @@
       <file leaf-file-name="HotelOperation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HotelOperation.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="975">
               <caret line="65" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="65" />
+=======
+            <state relative-caret-position="90">
+              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+>>>>>>> c9a82565bf69fc419851c79dbdbc369750eee238
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreparedStatement.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/sql/PreparedStatement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -106,8 +128,8 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/bean/Hotel.java" />
         <option value="$PROJECT_DIR$/src/DBconnection.java" />
-        <option value="$PROJECT_DIR$/src/HotelOperation.java" />
         <option value="$PROJECT_DIR$/src/MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/HotelOperation.java" />
         <option value="$PROJECT_DIR$/src/MenuItem.java" />
         <option value="$PROJECT_DIR$/src/RoomOperation.java" />
       </list>
@@ -923,10 +945,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HotelOperation.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="975">
           <caret line="65" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="65" />
+=======
+        <state relative-caret-position="90">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+>>>>>>> c9a82565bf69fc419851c79dbdbc369750eee238
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -942,11 +976,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RoomOperation.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="154">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="420">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+>>>>>>> c9a82565bf69fc419851c79dbdbc369750eee238
         </state>
       </provider>
     </entry>
