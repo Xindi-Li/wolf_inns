@@ -44,6 +44,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Night rate: ");
+            input = sc.next();
             if (Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -69,7 +70,7 @@ public class RoomOperation {
             ptmt.execute();
             System.out.println("A new room has been entered!");
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel and room number do not exist. Creation failed.");
+            System.out.println("The ID of the hotel does not exist. Creation failed.");
         }
 
     }
