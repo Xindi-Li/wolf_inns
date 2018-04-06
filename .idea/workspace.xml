@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90ccf647-f10e-4c76-8d96-54c3f9a84397" name="Default" comment="" />
+    <list default="true" id="90ccf647-f10e-4c76-8d96-54c3f9a84397" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/DBconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBconnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HotelOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HotelOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuItem.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,20 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuItem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MenuItem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MenuItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="336">
+              <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -33,8 +37,11 @@
       <file leaf-file-name="HotelOperation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HotelOperation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="147">
+              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,8 +49,8 @@
       <file leaf-file-name="DBconnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DBconnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="531">
+              <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -76,10 +83,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/HotelOperation.java" />
-        <option value="$PROJECT_DIR$/src/DBconnection.java" />
-        <option value="$PROJECT_DIR$/src/MenuItem.java" />
         <option value="$PROJECT_DIR$/src/MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/bean/Hotel.java" />
+        <option value="$PROJECT_DIR$/src/DBconnection.java" />
+        <option value="$PROJECT_DIR$/src/HotelOperation.java" />
+        <option value="$PROJECT_DIR$/src/MenuItem.java" />
       </list>
     </option>
   </component>
@@ -572,7 +580,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23987034" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15613182" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -619,6 +627,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -739,26 +750,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MenuItem.java">
+    <entry file="file://$PROJECT_DIR$/src/bean/Hotel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="189">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HotelOperation.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="941">
+          <caret line="2866" column="18" selection-start-line="2866" selection-start-column="18" selection-end-line="2866" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DBconnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="24" column="36" lean-forward="true" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        <state relative-caret-position="531">
+          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HotelOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -766,7 +808,14 @@
     <entry file="file://$PROJECT_DIR$/src/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
     </entry>

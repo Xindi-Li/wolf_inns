@@ -13,14 +13,12 @@ public class DBconnection {
 
     private static Connection connection = null;
 
-    private static Statement statement = null;
 
     public static void initialize() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try {
                 connection = DriverManager.getConnection(jdbcURL, user, password);
-                statement = connection.createStatement();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -30,12 +28,6 @@ public class DBconnection {
     }
 
     public static void close() {
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (Throwable whatever) {
-            }
-        }
         if (connection != null) {
             try {
                 connection.close();
@@ -44,8 +36,8 @@ public class DBconnection {
         }
     }
 
-    public static Statement getStatement() {
-        return statement;
+    public static Connection getConnection() {
+        return connection;
     }
 
 }

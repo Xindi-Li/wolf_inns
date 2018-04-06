@@ -13,6 +13,9 @@ public class MenuItem {
             System.out.print("Operation No: ");
             input = sc.next();
             switch (input) {
+                case "1":
+                    HotelOperation.enterHotel();
+                    System.out.println("A hotel has been entered!");
                 case "5":
                     MainMenu.printItem();
                     return;
