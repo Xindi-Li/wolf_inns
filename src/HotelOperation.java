@@ -57,8 +57,9 @@ public class HotelOperation {
             ptmt.setInt(4, idOfManager);
             ptmt.setString(5, city);
             ptmt.execute();
+            System.out.println("A new hotel has been entered!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("The ID of the hotel manager does not exist. Creation failed.");
         }
 
     }
