@@ -159,7 +159,7 @@ public class HotelOperation {
                 System.out.println("The hotel does not exist. Deletion failed");
             }
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel manager does not exist. Deletion failed.");
+            System.out.println("Deletion failed.");
         }
 
     }
