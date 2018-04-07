@@ -25,6 +25,14 @@ public class MenuItem {
                     RoomOperation.enterRoom();
                     printinfoMenu();
                     break;
+                case "5":
+                    RoomOperation.updateRoom();
+                    printinfoMenu();
+                    break;
+                case "6":
+                    RoomOperation.deleteRoom();
+                    printinfoMenu();
+                    break;
                 case "7":
                     StaffOperation.enterStaff();
                     printinfoMenu();
