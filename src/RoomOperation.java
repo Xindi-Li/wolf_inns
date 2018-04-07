@@ -212,7 +212,7 @@ public class RoomOperation {
             ptmt.setString(2, roomNumber);
             ResultSet rs = ptmt.executeQuery(sql);
             while (rs.next()) {
-                int availability = rs.getInt("availability");
+                boolean availability = rs.getBoolean("availability");
                 System.out.println("availability: " + availability);
             }
         } catch (SQLException e) {
