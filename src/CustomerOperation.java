@@ -105,7 +105,7 @@ public class CustomerOperation {
             ptmt.setString(1, name);
             ptmt.setString(2, date_of_birth);
             ptmt.setString(3, phone_number);
-            ptmt.setInt(4, email);
+            ptmt.setString(4, email);
             ptmt.setString(5, ssn);
             int count = ptmt.executeUpdate();
             // System.out.println("customer ");
