@@ -10,7 +10,7 @@ public class CustomerOperation {
 
         while(true) {
         	System.out.print("Customer Name: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
@@ -65,7 +65,7 @@ public class CustomerOperation {
 
         while(true) {
         	System.out.print("Customer Name: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
