@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CustomerOperation {
-	public static void enterNew() {
+	public static void enterCustomer() {
 		String input;
         Scanner sc = new Scanner(System.in);
 
