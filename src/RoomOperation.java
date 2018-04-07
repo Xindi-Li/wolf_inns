@@ -239,7 +239,7 @@ public class RoomOperation {
         }
         String roomCategory = input;
 
-        String sql = "SELECT hotel_ID, room_number, availability FROM room WHERE hotel_ID = ? AND room_category = ?";
+        String sql = "SELECT availability FROM room WHERE hotel_ID = ? AND room_category = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -247,11 +247,11 @@ public class RoomOperation {
             ptmt.setString(2, roomCategory);
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
-                int hotel_ID = rs.getInt("hotel_ID");
-                String room_number = rs.getString("number");
+                //int hotel_ID = rs.getInt("hotel_ID");
+                //String room_number = rs.getString("number");
                 boolean availability = rs.getBoolean("availability");
-                System.out.println("hotel_ID: " + hotel_ID);
-                System.out.println("room_number: " + room_number);
+                //System.out.println("hotel_ID: " + hotel_ID);
+                //System.out.println("room_number: " + room_number);
                 System.out.println("availability: " + availability);
             }
         } catch (SQLException e) {
