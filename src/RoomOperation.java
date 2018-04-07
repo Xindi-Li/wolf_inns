@@ -233,26 +233,29 @@ public class RoomOperation {
         int hotelID = Integer.valueOf(input);
 
         while (true) {
-            System.out.print("Room number: ");
+            System.out.print("Room category: ");
             input = sc.next();
             if (!input.trim().equals("")) break;
         }
-        String roomNumber = input;
+        String roomCategory = input;
 
-        String sql = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        String sql = "SELECT hotel_ID, room_number, availability FROM room WHERE hotel_ID = ? AND room_category = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, hotelID);
-            ptmt.setString(2, roomNumber);
-            int count = ptmt.executeUpdate();
-            if (count > 0) {
-                System.out.println("The room has been released!");
-            }else{
-                System.out.println("The room does not exist. Deletion failed");
+            ptmt.setString(2, roomCategory);
+            ResultSet rs = ptmt.executeQuery();
+            while (rs.next()) {
+                String hotel_ID = rs.getString("hotel_ID");
+                int room_number = rs.getInt("number");
+                boolean availability = rs.getBoolean("availability");
+                System.out.println("hotel_ID: " + hotel_ID);
+                System.out.println("room_number: " + room_number);
+                System.out.println("availability: " + availability);
             }
         } catch (SQLException e) {
-            System.out.println("Released failed.");
+            System.out.println("Checked failed.");
         }
     }
     public static void releaseRoom() {
