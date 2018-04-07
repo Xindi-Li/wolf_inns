@@ -247,8 +247,8 @@ public class RoomOperation {
             ptmt.setString(2, roomCategory);
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
-                String hotel_ID = rs.getString("hotel_ID");
-                int room_number = rs.getInt("number");
+                int hotel_ID = rs.getInt("hotel_ID");
+                String room_number = rs.getString("number");
                 boolean availability = rs.getBoolean("availability");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
