@@ -34,7 +34,7 @@ public class CustomerOperation {
         	input = sc.next();
             if (!input.trim().equals("")) break;
         }
-        String phone_number = input
+        String phone_number = input;
 
         while(true) {
         	System.out.print("E-mail: ");
@@ -89,7 +89,7 @@ public class CustomerOperation {
         	input = sc.next();
             if (!input.trim().equals("")) break;
         }
-        String phone_number = input
+        String phone_number = input;
 
         while(true) {
         	System.out.print("E-mail: ");
