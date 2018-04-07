@@ -210,7 +210,7 @@ public class RoomOperation {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomNumber);
-            ResultSet rs = ptmt.executeQuery(sql);
+            ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
                 boolean availability = rs.getBoolean("availability");
                 System.out.println("availability: " + availability);
