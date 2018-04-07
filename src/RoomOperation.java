@@ -253,6 +253,7 @@ public class RoomOperation {
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
                 System.out.println("availability: " + availability);
+                System.out.println("=====================================");
             }
         } catch (SQLException e) {
             System.out.println("Checked failed.");
