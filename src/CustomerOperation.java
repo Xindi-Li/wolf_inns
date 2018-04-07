@@ -50,7 +50,7 @@ public class CustomerOperation {
             ptmt.setString(1, ssn);
             ptmt.setString(2, name);
             ptmt.setString(3, date_of_birth);
-            ptmt.setInt(4, phone_number);
+            ptmt.setString(4, phone_number);
             ptmt.setString(5, email);
             ptmt.execute();
             System.out.println("A new customer has been entered!");
@@ -107,7 +107,7 @@ public class CustomerOperation {
             ptmt.setString(3, phone_number);
             ptmt.setInt(4, email);
             ptmt.setString(5, ssn);
-            int count = ptmt.execute();
+            int count = ptmt.executeUpdate();
             // System.out.println("customer ");
             if (count > 0) {
                 System.out.println("The customer has been updated!");
@@ -134,7 +134,7 @@ public class CustomerOperation {
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
-            ptmt.setInt(1, customerSSn);
+            ptmt.setInt(1, customerSSN);
             int count = ptmt.executeUpdate();
             if (count > 0) {
                 System.out.println("The customer has been deleted!");
