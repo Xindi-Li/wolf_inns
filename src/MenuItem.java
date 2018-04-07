@@ -25,6 +25,18 @@ public class MenuItem {
                     RoomOperation.enterRoom();
                     printinfoMenu();
                     break;
+                case "7":
+                    StaffOperation.enterStaff();
+                    printinfoMenu();
+                    break;
+                case "8":
+                    StaffOperation.updateStaff();
+                    printinfoMenu();
+                    break;
+                case "9":
+                    StaffOperation.deleteStaff();
+                    printinfoMenu();
+                    break;    
                 case "999":
                     MainMenu.printItem();
                     return;
@@ -40,6 +52,10 @@ public class MenuItem {
         System.out.println("4. Enter a new room");
         System.out.println("5. Update a room");
         System.out.println("6. Delete a room");
+        System.out.println("7. Enter a new staff");
+        System.out.println("8. Update a staff");
+        System.out.println("9. Delete a staff");
+        
         System.out.println("999. Go to the main menu");
         System.out.println("=====================================");
     }
