@@ -60,6 +60,13 @@ public class MenuItem {
                     RoomOperation.releaseRoom();
                     printinfoMenu();
                     break;
+                case "14":
+                    RoomOperation.checkRoomIsAvailableWithRoomNumber();
+                    printinfoMenu();
+                case "15":
+                    RoomOperation.checkRoomIsAvailableWithRoomCategory();
+                    printinfoMenu();
+                    break;
                 case "999":
                     MainMenu.printItem();
                     return;
@@ -82,6 +89,8 @@ public class MenuItem {
         System.out.println("11. Update a customer");
         System.out.println("12. Delete a customer");
         System.out.println("13. Release a room");
+        System.out.println("14. Check if room is available with room number");
+        System.out.println("15. Check if room is available with room category");
 
         System.out.println("999. Go to the main menu");
         System.out.println("=====================================");
