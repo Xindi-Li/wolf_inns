@@ -18,7 +18,7 @@ public class RoomOperation {
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
-        int hotel_ID = Integer.valueOf(input);
+        int hotelID = Integer.valueOf(input);
 
         while (true) {
             System.out.print("Room number: ");
@@ -62,7 +62,7 @@ public class RoomOperation {
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
-            ptmt.setInt(1, hotel_ID);
+            ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomNumber);
             ptmt.setString(3, roomCategory);
             ptmt.setInt(4, maxAllowedOccupancy);
@@ -72,6 +72,42 @@ public class RoomOperation {
             System.out.println("A new room has been entered!");
         } catch (SQLException e) {
             System.out.println("The ID of the hotel does not exist. Creation failed.");
+        }
+    }
+    public static void deleteRoom() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.next();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.next();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        String sql = "delete from room where hotel_ID = ? and room_number = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The room has been deleted!");
+            }else{
+                System.out.println("The room does not exist. Deletion failed");
+            }
+        } catch (SQLException e) {
+            System.out.println("The ID of the hotel manager does not exist. Deletion failed.");
         }
 
     }
