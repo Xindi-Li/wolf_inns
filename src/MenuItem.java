@@ -36,6 +36,17 @@ public class MenuItem {
                 case "9":
                     StaffOperation.deleteStaff();
                     printinfoMenu();
+                    break;
+                case "10":
+                    CustomerOperation.enterCustomer();
+                    printinfoMenu();
+                    break;
+                case "11":
+                    CustomerOperation.updateCustomer();
+                    printinfoMenu();
+                    break;
+                case "12":
+                    CustomerOperation.deleteCustomer();
                     break;    
                 case "999":
                     MainMenu.printItem();
@@ -55,6 +66,9 @@ public class MenuItem {
         System.out.println("7. Enter a new staff");
         System.out.println("8. Update a staff");
         System.out.println("9. Delete a staff");
+        System.out.println("10. Enter a new customer");
+        System.out.println("11. Update a customer");
+        System.out.println("12. Delete a customer");
         
         System.out.println("999. Go to the main menu");
         System.out.println("=====================================");
