@@ -63,6 +63,7 @@ public class MenuItem {
                 case "14":
                     RoomOperation.checkRoomIsAvailableWithRoomNumber();
                     printinfoMenu();
+                    break;
                 case "15":
                     RoomOperation.checkRoomIsAvailableWithRoomCategory();
                     printinfoMenu();
