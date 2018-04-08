@@ -250,10 +250,10 @@ public class RoomOperation {
                 int hotel_ID = rs.getInt("hotel_ID");
                 String room_number = rs.getString("room_number");
                 boolean availability = rs.getBoolean("availability");
+                System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
                 System.out.println("availability: " + availability);
-                System.out.println("=====================================");
             }
         } catch (SQLException e) {
             System.out.println("Checked failed.");
