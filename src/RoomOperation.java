@@ -211,7 +211,7 @@ public class RoomOperation {
             ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomNumber);
             ResultSet rs = ptmt.executeQuery();
-            while (rs.nextLine()) {
+            while (rs.next()) {
                 boolean availability = rs.getBoolean("availability");
                 System.out.println("availability: " + availability);
             }
@@ -246,7 +246,7 @@ public class RoomOperation {
             ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomCategory);
             ResultSet rs = ptmt.executeQuery();
-            while (rs.nextLine()) {
+            while (rs.next()) {
                 int hotel_ID = rs.getInt("hotel_ID");
                 String room_number = rs.getString("room_number");
                 boolean availability = rs.getBoolean("availability");
