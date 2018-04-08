@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -182,7 +183,116 @@ public class RoomOperation {
         } catch (SQLException e) {
             System.out.println("Deletion failed.");
         }
-
     }
+    public static void checkRoomIsAvailableWithRoomNumber() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
 
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.next();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.next();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        String sql = "SELECT availability FROM room WHERE hotel_ID = ? AND room_number = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            ResultSet rs = ptmt.executeQuery();
+            while (rs.next()) {
+                boolean availability = rs.getBoolean("availability");
+                System.out.println("availability: " + availability);
+            }
+        } catch (SQLException e) {
+            System.out.println("Checked failed.");
+        }
+    }
+    public static void checkRoomIsAvailableWithRoomCategory() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.next();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room category: ");
+            input = sc.next();
+            if (!input.trim().equals("")) break;
+        }
+        String roomCategory = input;
+
+        String sql = "SELECT hotel_ID, room_number, availability FROM room WHERE hotel_ID = ? AND room_category = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomCategory);
+            ResultSet rs = ptmt.executeQuery();
+            while (rs.next()) {
+                int hotel_ID = rs.getInt("hotel_ID");
+                String room_number = rs.getString("room_number");
+                boolean availability = rs.getBoolean("availability");
+                System.out.println("=====================================");
+                System.out.println("hotel_ID: " + hotel_ID);
+                System.out.println("room_number: " + room_number);
+                System.out.println("availability: " + availability);
+            }
+        } catch (SQLException e) {
+            System.out.println("Checked failed.");
+        }
+    }
+    public static void releaseRoom() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.next();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.next();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        String sql = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The room has been released!");
+            }else{
+                System.out.println("The room does not exist. Deletion failed");
+            }
+        } catch (SQLException e) {
+            System.out.println("Released failed.");
+        }
+    }
 }
