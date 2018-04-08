@@ -12,7 +12,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("Hotel name: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
