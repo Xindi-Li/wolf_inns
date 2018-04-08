@@ -15,7 +15,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -23,21 +23,21 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
 
         while (true) {
             System.out.print("Room Category: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomCategory = input;
 
         while (true) {
             System.out.print("Max allowed occupancy: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -45,7 +45,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Night rate: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -53,7 +53,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Availability: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -84,7 +84,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -92,21 +92,21 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
 
         while (true) {
             System.out.print("Room Category: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomCategory = input;
 
         while (true) {
             System.out.print("Max allowed occupancy: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -114,7 +114,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Night rate: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -122,7 +122,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Availability: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -155,7 +155,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -163,7 +163,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
@@ -191,7 +191,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -199,7 +199,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
@@ -211,7 +211,7 @@ public class RoomOperation {
             ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomNumber);
             ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
+            while (rs.nextLine()) {
                 boolean availability = rs.getBoolean("availability");
                 System.out.println("availability: " + availability);
             }
@@ -226,7 +226,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -234,7 +234,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room category: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomCategory = input;
@@ -246,7 +246,7 @@ public class RoomOperation {
             ptmt.setInt(1, hotelID);
             ptmt.setString(2, roomCategory);
             ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
+            while (rs.nextLine()) {
                 int hotel_ID = rs.getInt("hotel_ID");
                 String room_number = rs.getString("room_number");
                 boolean availability = rs.getBoolean("availability");
@@ -266,7 +266,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -274,7 +274,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;

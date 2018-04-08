@@ -12,14 +12,14 @@ public class StaffOperation {
 
         while (true) {
             System.out.print("Staff Name: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
         while (true) {
             System.out.print("Staff Age: ");
-            input = sc.next();
+            input = sc.nextLine();
             if(Pattern.matches(pattern,input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -27,14 +27,14 @@ public class StaffOperation {
 
         while(true){
             System.out.print("Staff Job Title: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String jobTitle = input;
 
         while (true) {
             System.out.print("Staff phone number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -42,14 +42,14 @@ public class StaffOperation {
 
         while(true){
             System.out.print("Staff Address: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String address = input;
 
         while (true) {
             System.out.print("ID of hotel currently serving: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -81,7 +81,7 @@ public class StaffOperation {
 
         while (true) {
             System.out.print("Staff ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -89,14 +89,14 @@ public class StaffOperation {
 
         while (true) {
             System.out.print("Staff Name: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
         while (true) {
             System.out.print("Staff Age: ");
-            input = sc.next();
+            input = sc.nextLine();
             if(Pattern.matches(pattern,input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -104,14 +104,14 @@ public class StaffOperation {
 
         while(true){
             System.out.print("Staff Job Title: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String jobTitle = input;
 
         while (true) {
             System.out.print("Staff phone number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -119,14 +119,14 @@ public class StaffOperation {
 
         while(true){
             System.out.print("Staff Address: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String address = input;
 
         while (true) {
             System.out.print("ID of hotel currently serving: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -163,7 +163,7 @@ public class StaffOperation {
 
         while (true) {
             System.out.print("Staff ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
