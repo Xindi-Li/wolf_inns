@@ -249,7 +249,8 @@ public class RoomOperation {
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
                 boolean availability = rs.getBoolean("availability");
-                System.out.println("availability: " + availability);
+                if(availability == "1") System.out.println("availability: yes");
+                else System.out.println("availability: no");
             }
         } catch (SQLException e) {
             System.out.println("Room is not existed. Checked failed.");
@@ -350,6 +351,9 @@ public class RoomOperation {
     public static void assignRooms() {
         String input;
         String pattern = "[0-9]+";
+        String patternForDecimal = "[0-9]+.[0-9]+";
+        String patternForBoolean = "[0-1]+";
+        String patternForCategory = "[1-3]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
