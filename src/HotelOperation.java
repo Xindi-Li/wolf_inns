@@ -59,7 +59,7 @@ public class HotelOperation {
             ptmt.execute();
             System.out.println("A new hotel has been entered!");
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel manager does not exist. Creation failed.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -130,7 +130,7 @@ public class HotelOperation {
                 System.out.println("The hotel does not exist. Update failed");
             }
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel manager does not exist. Update failed.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -159,7 +159,7 @@ public class HotelOperation {
                 System.out.println("The hotel does not exist. Deletion failed");
             }
         } catch (SQLException e) {
-            System.out.println("Deletion failed.");
+            System.out.println(e.getMessage());
         }
 
     }

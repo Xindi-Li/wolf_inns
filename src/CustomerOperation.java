@@ -4,53 +4,53 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class CustomerOperation {
-	public static void enterCustomer() {
-		String input;
+    public static void enterCustomer() {
+        String input;
         Scanner sc = new Scanner(System.in);
 
-        while(true) {
-        	System.out.print("Customer Name: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Customer Name: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
-        while(true) {
-        	System.out.print("SSN: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("SSN: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String ssn = input;
 
-        while(true) {
-        	System.out.print("Date of Birth: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Date of Birth: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String date_of_birth = input;
 
-        while(true) {
-        	System.out.print("Phone Number: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Phone Number: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String phone_number = input;
 
-        while(true) {
-        	System.out.print("E-mail: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("E-mail: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String email = input;
 
-        while(true) {
+        while (true) {
             System.out.print("billing_address: ");
             input = sc.next();
             if (!input.trim().equals("")) break;
         }
         String bill_add = input;
 
-        String sql = "insert into customer(ssn, customer_name, date_of_birth, phone, email, billing_address) values(?,?,?,?,?)";
+        String sql = "insert into customer(ssn, customer_name, date_of_birth, phone, email, billing_address) values(?,?,?,?,?,?)";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -63,50 +63,50 @@ public class CustomerOperation {
             ptmt.execute();
             System.out.println("A new customer has been entered!");
         } catch (SQLException e) {
-            System.out.println("Customer creation failed. Please try again.");
+            System.out.println(e.getMessage());
         }
-	}
+    }
 
-	public static void updateCustomer() {
-		String input;
-		Scanner sc = new Scanner(System.in);
+    public static void updateCustomer() {
+        String input;
+        Scanner sc = new Scanner(System.in);
 
-        while(true) {
-        	System.out.print("Customer Name: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Customer Name: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
-        while(true) {
-        	System.out.print("SSN: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("SSN: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String ssn = input;
 
-        while(true) {
-        	System.out.print("Date of Birth: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Date of Birth: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String date_of_birth = input;
 
-        while(true) {
-        	System.out.print("Phone Number: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("Phone Number: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String phone_number = input;
 
-        while(true) {
-        	System.out.print("E-mail: ");
-        	input = sc.nextLine();
+        while (true) {
+            System.out.print("E-mail: ");
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String email = input;
 
-        while(true) {
+        while (true) {
             System.out.print("billing_address: ");
             input = sc.next();
             if (!input.trim().equals("")) break;
@@ -132,15 +132,15 @@ public class CustomerOperation {
                 System.out.println("The customer does not exist. Update failed");
             }
         } catch (SQLException e) {
-            System.out.println("Customer update failed. Please try again.");
+            System.out.println(e.getMessage());
         }
-	}
+    }
 
-	public static void deleteCustomer() {
-		String input;
-		Scanner sc = new Scanner(System.in);
+    public static void deleteCustomer() {
+        String input;
+        Scanner sc = new Scanner(System.in);
 
-		while (true) {
+        while (true) {
             System.out.print("Customer SSN: ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
@@ -155,11 +155,11 @@ public class CustomerOperation {
             int count = ptmt.executeUpdate();
             if (count > 0) {
                 System.out.println("The customer has been deleted!");
-            }else{
+            } else {
                 System.out.println("The customer does not exist. Deletion failed");
             }
         } catch (SQLException e) {
-            System.out.println("Customer deletion failed. Please try again.");
+            System.out.println(e.getMessage());
         }
-	}
+    }
 }

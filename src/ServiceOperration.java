@@ -56,7 +56,7 @@ public class ServiceOperration {
             ptmt.execute();
             System.out.println("A new service has been entered!");
         } catch (SQLException e) {
-            System.out.println("checkin ID or staff ID does not exist. Creation failed.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public class ServiceOperration {
                 System.out.println("The service does not exist. Update failed");
             }
         } catch (SQLException e) {
-            System.out.println("Update failed!");
+            System.out.println(e.getMessage());
         }
     }
 }

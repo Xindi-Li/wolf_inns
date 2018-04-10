@@ -90,7 +90,7 @@ public class RoomOperation {
             ptmt.execute();
             System.out.println("A new room has been entered!");
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel does not exist or the room has already existed. Creation failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void updateRoom() {
@@ -181,7 +181,7 @@ public class RoomOperation {
                 System.out.println("The room does not exist. Update failed");
             }
         } catch (SQLException e) {
-            System.out.println("Update failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void deleteRoom() {
@@ -217,7 +217,7 @@ public class RoomOperation {
                 System.out.println("The room does not exist. Deletion failed");
             }
         } catch (SQLException e) {
-            System.out.println("Deletion failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void checkRoomIsAvailableWithRoomNumber() {
@@ -253,7 +253,7 @@ public class RoomOperation {
                 else System.out.println("availability: no");
             }
         } catch (SQLException e) {
-            System.out.println("Room is not existed. Checked failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void checkRoomIsAvailableWithRoomCategory() {
@@ -310,7 +310,7 @@ public class RoomOperation {
                 else System.out.println("availability: no");
             }
         } catch (SQLException e) {
-            System.out.println("The ID of hotel is not existed. Checked failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void releaseRoom() {
@@ -346,7 +346,7 @@ public class RoomOperation {
                 System.out.println("The room does not exist. Deletion failed");
             }
         } catch (SQLException e) {
-            System.out.println("Released failed.");
+            System.out.println(e.getMessage());
         }
     }
     public static void assignRooms() {
@@ -413,7 +413,7 @@ public class RoomOperation {
                 System.out.println("nightRate: " + nightRate);
             }
         } catch (SQLException e) {
-            System.out.println("Select failed.");
+            System.out.println(e.getMessage());
         }
     }
 }
