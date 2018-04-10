@@ -4,78 +4,80 @@ public class MenuItem {
     public static void infoProcessing() {
         String input;
         Scanner sc = new Scanner(System.in);
-        printinfoMenu();
+        printInfoMenu();
         while (true) {
             System.out.print("Operation No: ");
             input = sc.next();
             switch (input) {
                 case "1":
                     HotelOperation.enterHotel();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "2":
                     HotelOperation.updateHotel();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "3":
                     HotelOperation.deleteHotel();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "4":
                     RoomOperation.enterRoom();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "5":
                     RoomOperation.updateRoom();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "6":
                     RoomOperation.deleteRoom();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "7":
                     StaffOperation.enterStaff();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "8":
                     StaffOperation.updateStaff();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "9":
                     StaffOperation.deleteStaff();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "10":
                     CustomerOperation.enterCustomer();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "11":
                     CustomerOperation.updateCustomer();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "12":
                     CustomerOperation.deleteCustomer();
                     break;
                 case "13":
                     RoomOperation.releaseRoom();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "14":
                     RoomOperation.checkRoomIsAvailableWithRoomNumber();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
                 case "15":
                     RoomOperation.checkRoomIsAvailableWithRoomCategory();
-                    printinfoMenu();
+                    printInfoMenu();
                     break;
-                case "999":
+                case "16":
                     MainMenu.printItem();
                     return;
+                default:
+                    System.out.println("Your input is illegal.");
             }
         }
     }
 
-    private static void printinfoMenu() {
+    private static void printInfoMenu() {
         System.out.println("=====================================");
         System.out.println("1. Enter a new hotel");
         System.out.println("2. Update a hotel");
@@ -93,12 +95,37 @@ public class MenuItem {
         System.out.println("14. Check if room is available with room number");
         System.out.println("15. Check if room is available with room category");
 
-        System.out.println("999. Go to the main menu");
+        System.out.println("16. Go to the main menu");
         System.out.println("=====================================");
     }
 
     public static void maintainSerRecord() {
+        String input;
+        Scanner sc = new Scanner(System.in);
+        printInfoMenu();
+        while (true) {
+            System.out.print("Operation No: ");
+            input = sc.next();
+            switch (input) {
+                case "1":
+                    ServiceOperration.enterService();
+                    printServiceMenu();
+                    break;
+                case "2":
+                    ServiceOperration.updateService();
+                    printInfoMenu();
+                    break;
+                default:
+                    System.out.println("Your input is illegal.");
+            }
+        }
+    }
 
+    private static void printServiceMenu() {
+        System.out.println("=====================================");
+        System.out.println("1. Enter a new service");
+        System.out.println("2. Update a service");
+        System.out.println("=====================================");
     }
 
     public static void maintainBill() {
