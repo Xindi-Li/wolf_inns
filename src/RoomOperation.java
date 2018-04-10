@@ -31,9 +31,9 @@ public class RoomOperation {
 
         while (true) {
             System.out.println("Room Category: ");
-            System.out.println("Press 1 if category is : Single ");
-            System.out.println("Press 2 if category is : Deluxe ");
-            System.out.println("Press 3 if category is : Presidential ");
+            System.out.println("1. Single ");
+            System.out.println("2. Deluxe ");
+            System.out.println("3. Presidential ");
             input = sc.nextLine();
             if (Pattern.matches(patternForCategory, input)) break;
             else System.out.println("Your input is illegal");
@@ -69,8 +69,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.println("Availability: ");
-            System.out.println("Press 1 if the room is available. ");
-            System.out.println("Press 0 if the room is not available. ");
+            System.out.println("1. Available. ");
+            System.out.println("2. Not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
@@ -98,6 +98,7 @@ public class RoomOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForBoolean = "[0-1]+";
+        String patternForCategory = "[1-3]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -116,11 +117,26 @@ public class RoomOperation {
         String roomNumber = input;
 
         while (true) {
-            System.out.print("Room Category: ");
+            System.out.println("Room Category: ");
+            System.out.println("1. Single ");
+            System.out.println("2. Deluxe ");
+            System.out.println("3. Presidential ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForCategory, input)) break;
+            else System.out.println("Your input is illegal");
         }
-        String roomCategory = input;
+        String roomCategory = "";
+        switch (input) {
+            case "1":
+                roomCategory = "Single";
+                break;
+            case "2":
+                roomCategory = "Deluxe";
+                break;
+            case "3":
+                roomCategory = "Presidential";
+                break;
+        }
 
         while (true) {
             System.out.print("Max allowed occupancy: ");
@@ -140,8 +156,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.println("Availability: ");
-            System.out.println("Press 1 if the room is available. ");
-            System.out.println("Press 0 if the room is not available. ");
+            System.out.println("1. Available. ");
+            System.out.println("2. Not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
