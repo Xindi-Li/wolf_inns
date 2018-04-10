@@ -69,6 +69,10 @@ public class MenuItem {
                     printInfoMenu();
                     break;
                 case "16":
+                    RoomOperation.assignRooms();
+                    printInfoMenu();
+                    break;
+                case "999":
                     MainMenu.printItem();
                     return;
                 default:
@@ -94,8 +98,9 @@ public class MenuItem {
         System.out.println("13. Release a room");
         System.out.println("14. Check if room is available with room number");
         System.out.println("15. Check if room is available with room category");
+        System.out.println("16. Assign rooms to customers according to their requests and availability");
 
-        System.out.println("16. Go to the main menu");
+        System.out.println("999. Go to the main menu");
         System.out.println("=====================================");
     }
 
