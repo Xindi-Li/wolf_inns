@@ -9,7 +9,7 @@ public class MainMenu {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.print("Operation No: ");
-            input = sc.next();
+            input = sc.nextLine();
             switch (input) {
                 case "1":
                     MenuItem.infoProcessing();

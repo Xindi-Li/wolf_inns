@@ -12,21 +12,21 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("Hotel name: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
         while (true) {
             System.out.print("Hotel address: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String address = input;
 
         while (true) {
             System.out.print("Hotel phone number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -34,7 +34,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("ID of hotel manager: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -42,7 +42,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("City: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String city = input;
@@ -70,7 +70,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -78,21 +78,21 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("Hotel name: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String name = input;
 
         while (true) {
             System.out.print("Hotel address: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String address = input;
 
         while (true) {
             System.out.print("Hotel phone number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -100,7 +100,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("ID of hotel manager: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -108,7 +108,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("City: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String city = input;
@@ -141,7 +141,7 @@ public class HotelOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }

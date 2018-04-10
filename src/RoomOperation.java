@@ -11,11 +11,12 @@ public class RoomOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForBoolean = "[0-1]+";
+        String patternForCategory = "[1-3]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -23,21 +24,36 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
 
         while (true) {
-            System.out.print("Room Category: ");
-            input = sc.next();
-            if (!input.trim().equals("")) break;
+            System.out.println("Room Category: ");
+            System.out.println("Press 1 if category is : Single ");
+            System.out.println("Press 2 if category is : Deluxe ");
+            System.out.println("Press 3 if category is : Presidential ");
+            input = sc.nextLine();
+            if (Pattern.matches(patternForCategory, input)) break;
+            else System.out.println("Your input is illegal");
         }
-        String roomCategory = input;
+        String roomCategory = "";
+        switch (input) {
+            case "1":
+                roomCategory = "Single";
+                break;
+            case "2":
+                roomCategory = "Deluxe";
+                break;
+            case "3":
+                roomCategory = "Presidential";
+                break;
+        }
 
         while (true) {
             System.out.print("Max allowed occupancy: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -45,15 +61,17 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Night rate: ");
-            input = sc.next();
-            if (Pattern.matches(patternForDecimal, input)) break;
+            input = sc.nextLine();
+            if (Pattern.matches(pattern,input)||Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
         float nightRate = Float.valueOf(input);
 
         while (true) {
-            System.out.print("Availability: ");
-            input = sc.next();
+            System.out.println("Availability: ");
+            System.out.println("Press 1 if the room is available. ");
+            System.out.println("Press 0 if the room is not available. ");
+            input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -72,7 +90,7 @@ public class RoomOperation {
             ptmt.execute();
             System.out.println("A new room has been entered!");
         } catch (SQLException e) {
-            System.out.println("The ID of the hotel does not exist. Creation failed.");
+            System.out.println("The ID of the hotel does not exist or the room has already existed. Creation failed.");
         }
     }
     public static void updateRoom() {
@@ -84,7 +102,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -92,21 +110,21 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
 
         while (true) {
             System.out.print("Room Category: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomCategory = input;
 
         while (true) {
             System.out.print("Max allowed occupancy: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -114,15 +132,17 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Night rate: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
         float nightRate = Float.valueOf(input);
 
         while (true) {
-            System.out.print("Availability: ");
-            input = sc.next();
+            System.out.println("Availability: ");
+            System.out.println("Press 1 if the room is available. ");
+            System.out.println("Press 0 if the room is not available. ");
+            input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -155,7 +175,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -163,7 +183,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
@@ -191,7 +211,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -199,7 +219,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
@@ -226,7 +246,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -234,7 +254,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room category: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomCategory = input;
@@ -250,10 +270,10 @@ public class RoomOperation {
                 int hotel_ID = rs.getInt("hotel_ID");
                 String room_number = rs.getString("room_number");
                 boolean availability = rs.getBoolean("availability");
+                System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
                 System.out.println("availability: " + availability);
-                System.out.println("=====================================");
             }
         } catch (SQLException e) {
             System.out.println("Checked failed.");
@@ -266,7 +286,7 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Hotel ID: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
@@ -274,12 +294,48 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Room number: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String roomNumber = input;
 
-        String sql = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The room has been released!");
+            }else{
+                System.out.println("The room does not exist. Deletion failed");
+            }
+        } catch (SQLException e) {
+            System.out.println("Released failed.");
+        }
+    }
+    public static void assignRooms() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);

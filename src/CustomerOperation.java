@@ -17,28 +17,28 @@ public class CustomerOperation {
 
         while(true) {
         	System.out.print("SSN: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String ssn = input;
 
         while(true) {
         	System.out.print("Date of Birth: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String date_of_birth = input;
 
         while(true) {
         	System.out.print("Phone Number: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String phone_number = input;
 
         while(true) {
         	System.out.print("E-mail: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String email = input;
@@ -80,28 +80,28 @@ public class CustomerOperation {
 
         while(true) {
         	System.out.print("SSN: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String ssn = input;
 
         while(true) {
         	System.out.print("Date of Birth: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String date_of_birth = input;
 
         while(true) {
         	System.out.print("Phone Number: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String phone_number = input;
 
         while(true) {
         	System.out.print("E-mail: ");
-        	input = sc.next();
+        	input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String email = input;
@@ -142,7 +142,7 @@ public class CustomerOperation {
 
 		while (true) {
             System.out.print("Customer SSN: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         int customerSSN = Integer.valueOf(input);
