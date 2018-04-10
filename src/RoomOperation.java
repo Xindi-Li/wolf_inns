@@ -306,7 +306,8 @@ public class RoomOperation {
                 System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
-                System.out.println("availability: " + availability);
+                if(availability == true) System.out.println("availability: yes");
+                else System.out.println("availability: no");
             }
         } catch (SQLException e) {
             System.out.println("The ID of hotel is not existed. Checked failed.");
