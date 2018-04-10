@@ -53,6 +53,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Availability: ");
+            System.out.print("Press 1 if the room is available. ");
+            System.out.print("Press 0 if the room is not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
@@ -122,6 +124,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.print("Availability: ");
+            System.out.print("Press 1 if the room is available. ");
+            System.out.print("Press 0 if the room is not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
