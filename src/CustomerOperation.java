@@ -122,7 +122,7 @@ public class CustomerOperation {
             ptmt.setString(2, date_of_birth);
             ptmt.setString(3, phone_number);
             ptmt.setString(4, email);
-            ptmt.setString(5, bill_add)
+            ptmt.setString(5, bill_add);
             ptmt.setString(6, ssn);
             int count = ptmt.executeUpdate();
             // System.out.println("customer ");
