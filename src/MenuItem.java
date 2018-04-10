@@ -107,7 +107,7 @@ public class MenuItem {
     public static void maintainSerRecord() {
         String input;
         Scanner sc = new Scanner(System.in);
-        printInfoMenu();
+        printServiceMenu();
         while (true) {
             System.out.print("Operation No: ");
             input = sc.next();
@@ -118,7 +118,7 @@ public class MenuItem {
                     break;
                 case "2":
                     ServiceOperration.updateService();
-                    printInfoMenu();
+                    printServiceMenu();
                     break;
                 default:
                     System.out.println("Your input is illegal.");
