@@ -405,12 +405,15 @@ public class RoomOperation {
             while (rs.next()) {
                 int hotel_ID = rs.getInt("hotel_ID");
                 String room_number = rs.getString("room_number");
+                String room_category = rs.getString("room_category");
+                int max_allowed_occupancy = rs.getInt("max_allowed_occupancy");
+                float night_rate = rs.getFloat("night_rate");
                 System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
-                System.out.println("roomCategory: " + roomCategory);
-                System.out.println("maxAllowedOccupancy: " + maxAllowedOccupancy);
-                System.out.println("nightRate: " + nightRate);
+                System.out.println("roomCategory: " + room_category);
+                System.out.println("maxAllowedOccupancy: " + max_allowed_occupancy);
+                System.out.println("nightRate: " + night_rate);
             }
         } catch (SQLException e) {
             System.out.println("Select failed.");
