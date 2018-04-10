@@ -279,7 +279,7 @@ public class RoomOperation {
         }
         String roomNumber = input;
 
-        String sql = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
