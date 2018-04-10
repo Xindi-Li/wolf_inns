@@ -46,7 +46,7 @@ public class RoomOperation {
         while (true) {
             System.out.print("Night rate: ");
             input = sc.nextLine();
-            if (Pattern.matches(patternForDecimal, input)) break;
+            if (Pattern.matches(pattern,input)||Pattern.matches(patternForDecimal, input)) break;
             else System.out.println("Your input is illegal");
         }
         float nightRate = Float.valueOf(input);
