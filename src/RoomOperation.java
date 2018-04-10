@@ -408,6 +408,9 @@ public class RoomOperation {
                 System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
+                System.out.println("room_number: " + roomCategory);
+                System.out.println("room_number: " + maxAllowedOccupancy);
+                System.out.println("room_number: " + nightRate);
             }
         } catch (SQLException e) {
             System.out.println("Select failed.");
