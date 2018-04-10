@@ -120,6 +120,9 @@ public class MenuItem {
                     ServiceOperration.updateService();
                     printServiceMenu();
                     break;
+                case "3":
+                    MainMenu.printItem();
+                    return;
                 default:
                     System.out.println("Your input is illegal.");
             }
@@ -130,6 +133,7 @@ public class MenuItem {
         System.out.println("=====================================");
         System.out.println("1. Enter a new service");
         System.out.println("2. Update a service");
+        System.out.println("3. Go to the main menu");
         System.out.println("=====================================");
     }
 
