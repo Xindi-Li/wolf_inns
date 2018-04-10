@@ -249,7 +249,7 @@ public class RoomOperation {
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
                 boolean availability = rs.getBoolean("availability");
-                if(availability == "1") System.out.println("availability: yes");
+                if(availability == true) System.out.println("availability: yes");
                 else System.out.println("availability: no");
             }
         } catch (SQLException e) {
