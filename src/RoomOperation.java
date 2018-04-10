@@ -295,4 +295,40 @@ public class RoomOperation {
             System.out.println("Released failed.");
         }
     }
+    public static void assignRooms() {
+        String input;
+        String pattern = "[0-9]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The room has been released!");
+            }else{
+                System.out.println("The room does not exist. Deletion failed");
+            }
+        } catch (SQLException e) {
+            System.out.println("Released failed.");
+        }
+    }
 }
