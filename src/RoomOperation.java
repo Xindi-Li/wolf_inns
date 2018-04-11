@@ -2,8 +2,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-
-
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.Date;
@@ -360,6 +360,7 @@ public class RoomOperation {
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -450,8 +451,16 @@ public class RoomOperation {
         while (true) {
             System.out.print("Check-out date(yyyy-mm-dd): ");
             input = sc.nextLine();
-            if (Pattern.matches(patternForDate, input)) break;
-            else System.out.println("Your input is illegal");
+            //if (Pattern.matches(patternForDate, input)) break;
+            //else System.out.println("Your input is illegal");
+
+            try {
+                format.parse(input);
+                break;
+            }
+            catch(ParseException e){
+                System.out.println("Your input is illegal");
+            }
         }
         String checkOutDate = input;
 
