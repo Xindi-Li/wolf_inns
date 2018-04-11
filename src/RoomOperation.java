@@ -451,16 +451,16 @@ public class RoomOperation {
         while (true) {
             System.out.print("Check-out date(yyyy-mm-dd): ");
             input = sc.nextLine();
-            //if (Pattern.matches(patternForDate, input)) break;
-            //else System.out.println("Your input is illegal");
+            if (Pattern.matches(patternForDate, input)) break;
+            else System.out.println("Your input is illegal");
 
-            try {
-                format.parse(input);
-                break;
-            }
-            catch(ParseException e){
-                System.out.println("Your input is illegal");
-            }
+//            try {
+//                format.parse(input);
+//                break;
+//            }
+//            catch(ParseException e){
+//                System.out.println("Your input is illegal");
+//            }
         }
         String checkOutDate = input;
 
