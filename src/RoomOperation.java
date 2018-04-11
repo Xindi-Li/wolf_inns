@@ -379,7 +379,7 @@ public class RoomOperation {
         }
 
         while (true) {
-            System.out.print("Maximum allowed occupancy: ");
+            System.out.print("Number of guests: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
@@ -394,7 +394,7 @@ public class RoomOperation {
         }
         float nightRate = Float.valueOf(input);
 
-        String sql = "SELECT hotel_ID, room_number, room_category, max_allowed_occupancy, night_rate  FROM room WHERE availability = 1 AND room_category = ? AND max_allowed_occupancy = ? AND night_rate < ?";
+        String sql = "SELECT hotel_ID, room_number, room_category, max_allowed_occupancy, night_rate  FROM room WHERE availability = 1 AND room_category = ? AND max_allowed_occupancy > ? AND night_rate < ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
