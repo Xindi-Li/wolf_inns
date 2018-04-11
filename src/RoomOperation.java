@@ -2,8 +2,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+
+
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.Date;
+
+
 
 public class RoomOperation {
     public static void enterRoom() {
@@ -384,7 +389,7 @@ public class RoomOperation {
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
-        int maxAllowedOccupancy = Integer.valueOf(input);
+        int numberOfGuests = Integer.valueOf(input);
 
         while (true) {
             System.out.print("Maximum night rate: ");
@@ -399,7 +404,7 @@ public class RoomOperation {
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, roomCategory);
-            ptmt.setInt(2, maxAllowedOccupancy);
+            ptmt.setInt(2, numberOfGuests);
             ptmt.setFloat(3, nightRate);
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
@@ -415,6 +420,48 @@ public class RoomOperation {
                 System.out.println("maxAllowedOccupancy: " + max_allowed_occupancy);
                 System.out.println("nightRate: " + night_rate);
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        while (true) {
+            System.out.print("customer SSN: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;// need to check correctness
+        }
+        String customer_ssn = input;
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        java.util.Date date = new Date();
+
+
+        String sql_2 = "INSERT INTO checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time) values(?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql_2);
+            ptmt.setString(1, customer_ssn);
+            ptmt.setInt(2, hotelID);
+            ptmt.setString(3, roomNumber);
+            ptmt.setInt(4, numberOfGuests);
+            ptmt.setTimestamp(5, new java.sql.Timestamp(date.getTime()));
+            ptmt.setTimestamp(6, new java.sql.Timestamp(date.getTime()));
+            ptmt.setTimestamp(7, new java.sql.Timestamp(date.getTime()));
+            System.out.println("Date:" + date);
+            ptmt.execute();
+            System.out.println("Check-in table has been entered!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
