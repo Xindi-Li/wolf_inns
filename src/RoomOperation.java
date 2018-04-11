@@ -446,9 +446,15 @@ public class RoomOperation {
         }
         String roomNumber = input;
 
+        while (true) {
+            System.out.print("Check-out date(yyyy-mm-dd): ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;//need to check correctness
+        }
+        String checkOutDate = input;
+
         java.util.Date date = new Date();
-
-
+        
         String sql_2 = "INSERT INTO checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time) values(?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql_2);
@@ -457,7 +463,7 @@ public class RoomOperation {
             ptmt.setString(3, roomNumber);
             ptmt.setInt(4, numberOfGuests);
             ptmt.setTimestamp(5, new java.sql.Timestamp(date.getTime()));
-            ptmt.setTimestamp(6, new java.sql.Timestamp(date.getTime()));
+            ptmt.setString(6, checkOutDate);
             ptmt.setTimestamp(7, new java.sql.Timestamp(date.getTime()));
             System.out.println("Date:" + date);
             ptmt.execute();
