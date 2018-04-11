@@ -359,6 +359,7 @@ public class RoomOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
+        String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -449,12 +450,13 @@ public class RoomOperation {
         while (true) {
             System.out.print("Check-out date(yyyy-mm-dd): ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;//need to check correctness
+            if (Pattern.matches(patternForDate, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String checkOutDate = input;
 
-        java.util.Date date = new Date();
-        
+        java.util.Date date = new Date();// for checkin time
+
         String sql_2 = "INSERT INTO checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time) values(?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql_2);
@@ -465,11 +467,12 @@ public class RoomOperation {
             ptmt.setTimestamp(5, new java.sql.Timestamp(date.getTime()));
             ptmt.setString(6, checkOutDate);
             ptmt.setTimestamp(7, new java.sql.Timestamp(date.getTime()));
-            System.out.println("Date:" + date);
             ptmt.execute();
             System.out.println("Check-in table has been entered!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        //need add billing
+        //need update room availability
     }
 }
