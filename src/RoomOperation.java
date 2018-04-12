@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.Date;
+
+
 
 public class RoomOperation {
     public static void enterRoom() {
@@ -354,6 +357,7 @@ public class RoomOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
+        String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -379,12 +383,12 @@ public class RoomOperation {
         }
 
         while (true) {
-            System.out.print("Maximum allowed occupancy: ");
+            System.out.print("Number of guests: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
-        int maxAllowedOccupancy = Integer.valueOf(input);
+        int numberOfGuests = Integer.valueOf(input);
 
         while (true) {
             System.out.print("Maximum night rate: ");
@@ -394,12 +398,12 @@ public class RoomOperation {
         }
         float nightRate = Float.valueOf(input);
 
-        String sql = "SELECT hotel_ID, room_number, room_category, max_allowed_occupancy, night_rate  FROM room WHERE availability = 1 AND room_category = ? AND max_allowed_occupancy = ? AND night_rate < ?";
+        String sql = "SELECT hotel_ID, room_number, room_category, max_allowed_occupancy, night_rate  FROM room WHERE availability = 1 AND room_category = ? AND max_allowed_occupancy >= ? AND night_rate < ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, roomCategory);
-            ptmt.setInt(2, maxAllowedOccupancy);
+            ptmt.setInt(2, numberOfGuests);
             ptmt.setFloat(3, nightRate);
             ResultSet rs = ptmt.executeQuery();
             while (rs.next()) {
@@ -414,6 +418,71 @@ public class RoomOperation {
                 System.out.println("roomCategory: " + room_category);
                 System.out.println("maxAllowedOccupancy: " + max_allowed_occupancy);
                 System.out.println("nightRate: " + night_rate);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        //insert checkin
+        while (true) {
+            System.out.print("customer SSN: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;// need to check correctness
+        }
+        String customer_ssn = input;
+
+        while (true) {
+            System.out.print("Hotel ID: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int hotelID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("Room number: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String roomNumber = input;
+
+        while (true) {
+            System.out.print("Check-out date(yyyy-mm-dd): ");
+            input = sc.nextLine();
+            if (Pattern.matches(patternForDate, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        String checkOutDate = input; // need to check checkouttime is later than now
+
+        java.util.Date date = new Date();// for checkin time
+
+        String sql_2 = "INSERT INTO checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time) values(?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql_2);
+            ptmt.setString(1, customer_ssn);
+            ptmt.setInt(2, hotelID);
+            ptmt.setString(3, roomNumber);
+            ptmt.setInt(4, numberOfGuests);
+            ptmt.setTimestamp(5, new java.sql.Timestamp(date.getTime()));
+            ptmt.setString(6, checkOutDate);
+            ptmt.setTimestamp(7, new java.sql.Timestamp(date.getTime()));
+            ptmt.execute();
+            System.out.println("Check-in table has been entered!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        //need add billing
+        //update availability
+        String sql_3 = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql_3);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The availability of the room has been updated!");
+            } else {
+                System.out.println("The room does not exist. Update failed");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
