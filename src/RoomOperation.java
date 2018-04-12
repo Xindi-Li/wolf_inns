@@ -360,7 +360,6 @@ public class RoomOperation {
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -426,6 +425,7 @@ public class RoomOperation {
             System.out.println(e.getMessage());
         }
 
+        //start sql 2
         while (true) {
             System.out.print("customer SSN: ");
             input = sc.nextLine();
@@ -453,16 +453,8 @@ public class RoomOperation {
             input = sc.nextLine();
             if (Pattern.matches(patternForDate, input)) break;
             else System.out.println("Your input is illegal");
-
-//            try {
-//                format.parse(input);
-//                break;
-//            }
-//            catch(ParseException e){
-//                System.out.println("Your input is illegal");
-//            }
         }
-        String checkOutDate = input;
+        String checkOutDate = input; // need to check checkouttime is later than now
 
         java.util.Date date = new Date();// for checkin time
 
@@ -483,5 +475,19 @@ public class RoomOperation {
         }
         //need add billing
         //need update room availability
+        String sql_3 = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql_3);
+            ptmt.setInt(1, hotelID);
+            ptmt.setString(2, roomNumber);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The availability of the room has been updated!");
+            } else {
+                System.out.println("The room does not exist. Update failed");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
