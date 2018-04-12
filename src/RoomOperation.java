@@ -455,7 +455,6 @@ public class RoomOperation {
         c.setTime(new Date()); // Now use today date.
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         while (true) {
-
             System.out.print("How many days staying: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) {
@@ -463,7 +462,7 @@ public class RoomOperation {
                 break;}
             else System.out.println("Your input is illegal");
         }
-        String checkOutDate = df.format(c);
+        String checkOutDate = df.format(c.getTime());
         //String checkOutDate = c; // need to check checkouttime is later than now
 
 //        while (true) {
