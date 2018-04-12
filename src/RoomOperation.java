@@ -463,15 +463,6 @@ public class RoomOperation {
             else System.out.println("Your input is illegal");
         }
         String checkOutDate = df.format(c.getTime());
-        //String checkOutDate = c; // need to check checkouttime is later than now
-
-//        while (true) {
-//            System.out.print("Check-out date(yyyy-mm-dd): ");
-//            input = sc.nextLine();
-//            if (Pattern.matches(patternForDate, input)) break;
-//            else System.out.println("Your input is illegal");
-//        }
-//        String checkOutDate = input; // need to check checkouttime is later than now
 
         java.util.Date date = new Date();// for checkin time
 
