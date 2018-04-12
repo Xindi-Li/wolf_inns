@@ -425,7 +425,7 @@ public class RoomOperation {
             System.out.println(e.getMessage());
         }
 
-        //start sql 2
+        //insert checkin
         while (true) {
             System.out.print("customer SSN: ");
             input = sc.nextLine();
@@ -474,7 +474,7 @@ public class RoomOperation {
             System.out.println(e.getMessage());
         }
         //need add billing
-        //need update room availability
+        //update availability
         String sql_3 = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql_3);
