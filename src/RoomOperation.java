@@ -2,8 +2,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.Date;

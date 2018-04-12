@@ -2,10 +2,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class CustomerOperation {
     public static void enterCustomer() {
         String input;
+        String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -25,7 +27,8 @@ public class CustomerOperation {
         while (true) {
             System.out.print("Date of Birth: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForDate, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String date_of_birth = input;
 
