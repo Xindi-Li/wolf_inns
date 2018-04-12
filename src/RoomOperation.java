@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 
 
@@ -448,13 +451,28 @@ public class RoomOperation {
         }
         String roomNumber = input;
 
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         while (true) {
+
             System.out.print("Check-out date(yyyy-mm-dd): ");
             input = sc.nextLine();
-            if (Pattern.matches(patternForDate, input)) break;
+            if (Pattern.matches(pattern, input)) {
+                c.add(Calendar.DATE, Integer.parseInt(input)); // Adds input days
+                break;}
             else System.out.println("Your input is illegal");
         }
-        String checkOutDate = input; // need to check checkouttime is later than now
+        String checkOutDate = df.format(c);
+        //String checkOutDate = c; // need to check checkouttime is later than now
+
+//        while (true) {
+//            System.out.print("Check-out date(yyyy-mm-dd): ");
+//            input = sc.nextLine();
+//            if (Pattern.matches(patternForDate, input)) break;
+//            else System.out.println("Your input is illegal");
+//        }
+//        String checkOutDate = input; // need to check checkouttime is later than now
 
         java.util.Date date = new Date();// for checkin time
 
