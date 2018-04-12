@@ -10,7 +10,7 @@ public class CustomerOperation {
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
         String patternForSSN = "^[0-9]{9}$";
         String patternForPhoneNumber = "^[0-9]{10}$";
-        String patternForEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        String patternForEmail = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
