@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 
 
@@ -358,6 +361,7 @@ public class RoomOperation {
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
+        String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -427,7 +431,8 @@ public class RoomOperation {
         while (true) {
             System.out.print("customer SSN: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;// need to check correctness
+            if (Pattern.matches(patternForSSN, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String customer_ssn = input;
 
@@ -446,13 +451,28 @@ public class RoomOperation {
         }
         String roomNumber = input;
 
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         while (true) {
-            System.out.print("Check-out date(yyyy-mm-dd): ");
+
+            System.out.print("How many days staying: ");
             input = sc.nextLine();
-            if (Pattern.matches(patternForDate, input)) break;
+            if (Pattern.matches(pattern, input)) {
+                c.add(Calendar.DATE, Integer.parseInt(input)); // Adds input days
+                break;}
             else System.out.println("Your input is illegal");
         }
-        String checkOutDate = input; // need to check checkouttime is later than now
+        String checkOutDate = df.format(c);
+        //String checkOutDate = c; // need to check checkouttime is later than now
+
+//        while (true) {
+//            System.out.print("Check-out date(yyyy-mm-dd): ");
+//            input = sc.nextLine();
+//            if (Pattern.matches(patternForDate, input)) break;
+//            else System.out.println("Your input is illegal");
+//        }
+//        String checkOutDate = input; // need to check checkouttime is later than now
 
         java.util.Date date = new Date();// for checkin time
 
