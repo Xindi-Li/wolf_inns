@@ -149,6 +149,14 @@ public class MenuItem {
                     BillOperation.generate();
                     printBillMenu();
                     break;
+                case "2":
+                    BillOperation.update();
+                    printBillMenu();
+                    break;
+                case "3":
+                    BillOperation.show();
+                    printBillMenu();
+                    break;       
                 default:
                     System.out.println("Your input is illegal.");
             }

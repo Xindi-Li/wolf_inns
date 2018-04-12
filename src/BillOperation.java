@@ -90,23 +90,38 @@ public class BillOperation{
         }
         int guestNo = Integer.valueOf(input);  
         
-        
+
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         while (true) {
+            boolean flag = false;
+            Date nowDate = new Date();
             System.out.print("The end date is: \n");
             System.out.print("The format should be: yyyy-MM-dd\n");
             input = sc.nextLine();
-            break;
+            try{
+            flag = formatter.parse(input).before(nowDate);
+            if(flag){
+                    System.out.println("Your input is illegal, The date inout should late than today's date");
+            }
+            else    
+                break;
+            }catch(ParseException e){
+                e.printStackTrace();
+            }
+            
           }  
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+            
+             
             Date enddate = null;
             try{
                 enddate = formatter.parse(input);
+  
             }catch(ParseException e){
                 e.printStackTrace();
             }
         
         
-       
+        CustomerOperation.enterCustomer();
         
         String sql = "insert into checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time, checkout_time) values(?,?,?,?,?,?,?,?)";
         Connection conn = DBconnection.getConnection();
@@ -185,4 +200,95 @@ public class BillOperation{
     
     }
 
+    public static void update(){
+        String input;
+        String pattern = "[0-9]+";
+        String patternForDecimal = "[0-9]+.[0-9]+";
+        String patternForCategory = "[1-3]+";
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("SSN of customer: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        String SSN = input;
+
+        while (true) {
+            System.out.print("The bill ID: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        int billID = Integer.valueOf(input);
+
+        while (true) {
+            System.out.print("payment method: \n");
+            System.out.println("1. credit card");
+            System.out.println("2. cash");
+            System.out.println("3. hotel credit card");
+            input = sc.nextLine();
+            if (Pattern.matches(patternForCategory, input)) break;
+            else System.out.println("Your input is illegal"); 
+        }
+
+        String output = "";    
+            switch(input){
+                case "1":
+                    output = "credit card";
+                    break;
+                case "2":
+                    output = "cash";
+                    break;
+                case "3":
+                    output = "hotel credit card";
+                    break;
+                default:
+                    System.out.println("your input is illegal");   
+                    break;        
+            }
+       
+        String cardnumber = "";    
+        if(input.equals("1")||input.equals("3")){
+        while (true) {
+            System.out.print("card number: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
+        }
+        cardnumber = input;
+        }
+        while (true) {
+        System.out.print("Price: ");
+        input = sc.nextLine();
+        if (Pattern.matches(pattern, input) || Pattern.matches(patternForDecimal, input)) break;
+        else System.out.println("Your input is illegal");
+        }
+        float price = Float.valueOf(input);
+        
+        String sql = "UPDATE billing SET SSN_of_the_person_responsible_for_the_payment =?, payment_method=?, card_number=?, price=? WHERE bill_ID=?";
+        Connection conn = DBconnection.getConnection();
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, SSN);
+            ptmt.setString(2, output);
+            ptmt.setString(3, cardnumber);
+            ptmt.setFloat(4, price);
+            ptmt.setInt(5, billID);
+            int count = ptmt.executeUpdate();
+            if (count > 0) {
+                System.out.println("The bill information has been updated!");
+            } else {
+                System.out.println("The bill information does not exist. Update failed");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public static void show(){
+
+    }
 }  
