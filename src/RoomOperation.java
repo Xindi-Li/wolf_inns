@@ -453,7 +453,7 @@ public class RoomOperation {
 
         Calendar c = Calendar.getInstance();
         c.setTime(new Date()); // Now use today date.
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         while (true) {
 
             System.out.print("Check-out date(yyyy-mm-dd): ");
