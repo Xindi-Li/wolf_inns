@@ -136,9 +136,31 @@ public class MenuItem {
         System.out.println("3. Go to the main menu");
         System.out.println("=====================================");
     }
+      
+    public static void maintainBill(){
+        String input;
+        Scanner sc = new Scanner(System.in);
+        printBillMenu();
+        while (true) {
+            System.out.print("Operation No: ");
+            input = sc.next();
+            switch (input) {
+                case "1":
+                    BillOperation.generate();
+                    printBillMenu();
+                    break;
+                default:
+                    System.out.println("Your input is illegal.");
+            }
+        }
+    }
 
-    public static void maintainBill() {
-
+    public static void printBillMenu() {
+        System.out.println("=====================================");
+        System.out.println("1. generate  bill information");
+        System.out.println("2. Update bill information");
+        System.out.println("3. show bill information with details");
+        System.out.println("=====================================");    
     }
 
     public static void report() {
