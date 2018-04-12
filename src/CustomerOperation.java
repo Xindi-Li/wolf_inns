@@ -8,6 +8,9 @@ public class CustomerOperation {
     public static void enterCustomer() {
         String input;
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
+        String patternForSSN = "^[0-9]{9}$";
+        String patternForPhoneNumber = "^[0-9]{10}$";
+        String patternForEmail = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -20,7 +23,8 @@ public class CustomerOperation {
         while (true) {
             System.out.print("SSN: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForSSN, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String ssn = input;
 
@@ -35,14 +39,16 @@ public class CustomerOperation {
         while (true) {
             System.out.print("Phone Number: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForPhoneNumber, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String phone_number = input;
 
         while (true) {
             System.out.print("E-mail: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForEmail, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String email = input;
 
