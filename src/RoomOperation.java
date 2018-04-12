@@ -453,10 +453,10 @@ public class RoomOperation {
 
         Calendar c = Calendar.getInstance();
         c.setTime(new Date()); // Now use today date.
-        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         while (true) {
 
-            System.out.print("Check-out date(yyyy-mm-dd): ");
+            System.out.print("How many days staying: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) {
                 c.add(Calendar.DATE, Integer.parseInt(input)); // Adds input days
