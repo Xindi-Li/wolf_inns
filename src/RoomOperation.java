@@ -358,6 +358,7 @@ public class RoomOperation {
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
+        String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -427,7 +428,8 @@ public class RoomOperation {
         while (true) {
             System.out.print("customer SSN: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;// need to check correctness
+            if (Pattern.matches(patternForSSN, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String customer_ssn = input;
 
