@@ -20,14 +20,15 @@ public class ReportOperation{
 		String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
 
 		while (true) {
-			System.out.println("Operation No:");
+			
 			printRoomMethodMenu();
+			System.out.print("Operation No:");
 
 			input = sc.next();
 			switch (input) {
 				case "1":
 					while (true) {
-						System.out.println("Please input hotel ID:");
+						System.out.print("Please input hotel ID:");
 						input = sc.next();
 						if (Pattern.matches(pattern, input)){
 							System.out.println(getNumberOfRoom(Integer.valueOf(input)));
@@ -37,7 +38,7 @@ public class ReportOperation{
 					}
 				case "2":
 					while (true) {
-						System.out.println("Please input room type:");
+						System.out.print("Please input room type:");
 						printRoomType();
 						input = sc.next();
 						if (Pattern.matches(patternForCategory, input)){
@@ -48,7 +49,7 @@ public class ReportOperation{
 					}
 				case "3":
 				    while (true) {
-				    	System.out.println("Please input start date:");
+				    	System.out.print("Please input start date:");
 				    	input = sc.next();
 				    	if (Pattern.matches(patternForDate, input)){
 				    		String start_date = input;
