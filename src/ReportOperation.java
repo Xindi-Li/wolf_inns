@@ -29,9 +29,9 @@ public class ReportOperation{
 				case "1":
 					while (true) {
 						System.out.print("Please input hotel ID:");
-						input = sc.next();
-						if (Pattern.matches(pattern, input)){
-							System.out.println(getNumberOfRoom(Integer.valueOf(input)));
+						String choice = sc.next();
+						if (Pattern.matches(pattern, choice)){
+							System.out.println(getNumberOfRoom(Integer.valueOf(choice)));
 							break;
 						}
 						else {
@@ -44,9 +44,9 @@ public class ReportOperation{
 						printRoomType();
 						System.out.print("Please input room type:");
 						
-						input = sc.next();
-						if (Pattern.matches(patternForCategory, input)){
-							System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(input))));
+						String choice = sc.next();
+						if (Pattern.matches(patternForCategory, choice)){
+							System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(choice))));
 							break;
 						}
 						else {
@@ -57,13 +57,13 @@ public class ReportOperation{
 				case "3":
 				    while (true) {
 				    	System.out.print("Please input start date:");
-				    	input = sc.next();
-				    	if (Pattern.matches(patternForDate, input)){
-				    		String start_date = input;
+				    	String choice = sc.next();
+				    	if (Pattern.matches(patternForDate, choice)){
+				    		String start_date = choice;
 				    		System.out.println("Please input end date:");
-				    		input = sc.next();
-				    		if (Pattern.matches(patternForDate, input)){
-				    			System.out.println(getNumberOfRoom(start_date, input));
+				    		choice = sc.next();
+				    		if (Pattern.matches(patternForDate, choice)){
+				    			System.out.println(getNumberOfRoom(start_date, choice));
 				    			break;
 				    		}
 				    		else{
