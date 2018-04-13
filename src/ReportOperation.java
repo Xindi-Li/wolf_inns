@@ -93,6 +93,7 @@ public class ReportOperation{
 			    return "Presidential";
 			 default:
 			    System.out.println("illegal input.");
+			    return;
 	    }
 	}
 
