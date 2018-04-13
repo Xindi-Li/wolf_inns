@@ -503,7 +503,7 @@ public class RoomOperation {
             }
 
             //doing bill generate, check the return value, if false, rollback
-            if(!BillOperation.generate()) {
+            if(!BillOperation.generate(customer_ssn)) {
                 System.out.println("Bill generate failed! Start rolling back!");
                 conn.rollback();
             }
