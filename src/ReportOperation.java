@@ -122,9 +122,11 @@ public class ReportOperation{
 		String sql = "select count(*) from room where hotel_ID = ?";
 		Connection conn = DBconnection.getConnection();
 		try {
+			System.out.println("int try segment");
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, id);
             ResultSet rs = ptmt.executeQuery();
+            System.out.println("get ResultSet");
             System.out.println(rs.getInt("total"));
             return rs.getInt("total");
         } catch (SQLException e) {
