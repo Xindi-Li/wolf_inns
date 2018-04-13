@@ -499,8 +499,8 @@ public class RoomOperation {
                 try {
                     PreparedStatement ptmt = conn.prepareStatement(sql_3);
                     ptmt.setInt(1, dedicated_service_staff_ID);
-                    ptmt.setInt(2, hotelID);
-                    ptmt.setString(3, roomNumber);
+                    ptmt.setString(2, roomNumber);
+                    ptmt.setInt(3, hotelID);
                     ptmt.execute();
                     System.out.println("Dedicated service staff has been assigned!");
                 } catch (SQLException e) {
