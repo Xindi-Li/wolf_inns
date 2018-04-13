@@ -127,8 +127,10 @@ public class ReportOperation{
             ptmt.setString(1, id);
             ResultSet rs = ptmt.executeQuery();
             System.out.println("get ResultSet");
-            System.out.println(rs.getInt("total"));
-            return rs.getInt("total");
+            while(rs.next()){
+	            System.out.println(rs.getInt("total"));
+	            return rs.getInt("total");
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
