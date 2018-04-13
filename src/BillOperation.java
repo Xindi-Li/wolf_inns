@@ -12,7 +12,12 @@ import java.math.*;
 
 
 public class BillOperation{
-    public static void generate() {
+    public static  boolean generate() throws SQLException {
+        boolean result = false;
+        Connection conn = DBconnection.getConnection();
+    try{
+        conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+        conn.setAutoCommit(false);
         String input;
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
@@ -66,95 +71,38 @@ public class BillOperation{
         cardnumber = input;
     }
 
-        while (true) {
-            System.out.print("Hotel ID: ");
-            input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
-            else System.out.println("Your input is illegal");
+        String sql4 = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql4);
+            ptmt.setString(1,SSN);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+                checkinID = rs.getInt("checkin_ID");
+             }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        int hotelID = Integer.valueOf(input);
-
-        while (true) {
-            System.out.print("The room number is: ");
-            input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
-            else System.out.println("Your input is illegal");
-        }
-        String roomNo = input;    
-
-        while (true) {
-            System.out.print("number of guests: ");
-            input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
-            else System.out.println("Your input is illegal");
-        }
-        int guestNo = Integer.valueOf(input);  
-        
 
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        while (true) {
-            boolean flag = false;
-            Date nowDate = new Date();
-            System.out.print("The end date is: \n");
-            System.out.print("The format should be: yyyy-MM-dd\n");
-            input = sc.nextLine();
-            try{
-            flag = formatter.parse(input).before(nowDate);
-            if(flag){
-                    System.out.println("Your input is illegal, The date inout should late than today's date");
-            }
-            else    
-                break;
-            }catch(ParseException e){
-                e.printStackTrace();
-            }
-            
-          }  
-            
-             
-            Date enddate = null;
-            try{
-                enddate = formatter.parse(input);
-  
-            }catch(ParseException e){
-                e.printStackTrace();
-            }
-        
-        
-        CustomerOperation.enterCustomer();
-        
-        String sql = "insert into checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time, checkout_time) values(?,?,?,?,?,?,?,?)";
-        Connection conn = DBconnection.getConnection();
-        try {
-            
-            Date startdate = new Date();
-            java.util.Date date = new Date();
-            PreparedStatement ptmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ptmt.setString(1, SSN);
-            ptmt.setInt(2, hotelID);
-            ptmt.setString(3, roomNo);
-            ptmt.setInt(4, guestNo);
-            ptmt.setDate(5, new java.sql.Date(formatter.parse(formatter.format(startdate)).getTime()));
-            ptmt.setDate(6, new java.sql.Date(enddate.getTime()));
-            ptmt.setTimestamp(7, new java.sql.Timestamp(date.getTime()));
-            ptmt.setNull(8, java.sql.Types.TIMESTAMP);
-            ptmt.execute();
-            System.out.println("A checkin information has been generated!");
-            ResultSet rs = ptmt.getGeneratedKeys(); 
-            if(rs.next()){
-                checkinID = rs.getInt(1);
-            }
-        } catch (SQLException e1 ) {
-            System.out.println(e1.getMessage());
-        } catch(ParseException e2){
-                e2.printStackTrace();
+        Date startdate = null;
+        Date enddate = null;
+        String sql5 = "select start_date, end_date from checkin where checkin_ID = ?";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql5);
+            ptmt.setInt(1,checkinID);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+                startdate = rs.getDate("start_date");
+                enddate = rs.getDate("end_date");
+             }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
 
         float price =  0.0f;
         String sql1 = "select night_rate from room join checkin On room.room_number = checkin.room_number and room.hotel_ID = checkin.hotel_ID where checkin.checkin_ID  = ?";
         try{
             PreparedStatement ptmt = conn.prepareStatement(sql1);
-            Statement ptmt1 = conn.createStatement();
             ptmt.setInt(1,checkinID);
             ResultSet rs = ptmt.executeQuery();
             while(rs.next()){
@@ -165,7 +113,7 @@ public class BillOperation{
         }
         
     try{
-        Date startdate = new Date();
+        
         long daydiff = (enddate.getTime()-formatter.parse(formatter.format(startdate)).getTime())/(24*60*60*1000);
         float total = price * daydiff;
         String sql2 = "insert into billing(SSN_of_the_person_responsible_for_the_payment, payment_method, card_number, price) values(?,?,?,?)";
@@ -188,18 +136,29 @@ public class BillOperation{
         }catch(ParseException e){
             e.printStackTrace();
         }
+
         String sql3 = "insert into billing_checkin(bill_ID,checkin_ID) values(?,?)";
         try{
             PreparedStatement ptmt = conn.prepareStatement(sql3);
-            ptmt.setInt(1,billID);
-            ptmt.setInt(2,checkinID);
+            ptmt.setInt(1, billID);
+            ptmt.setInt(2, checkinID);
+            ptmt.execute();
             System.out.println("A billing_checkin information has been generated!");
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    
-    }
+        
+        result = true;
+        conn.commit();
 
+    } catch (Exception e) {
+        e.printStackTrace();
+        conn.rollback();
+    } finally {
+        conn.setAutoCommit(true);
+        return result;
+    }
+}
     public static void update(){
         String input;
         String pattern = "[0-9]+";
@@ -289,6 +248,87 @@ public class BillOperation{
     }
 
     public static void show(){
+        String input;
+        String pattern = "[0-9]+";
+        String patternForDecimal = "[0-9]+.[0-9]+";
+        String patternForCategory = "[1-3]+";
+        Scanner sc = new Scanner(System.in);
+        int checkinID = 0;
+        int billID  = 0;
+        float price = 0.0f;
+        float total = 0.0f;
 
+        Connection conn = DBconnection.getConnection();
+
+        while (true) {
+            System.out.print("The customer's SSN: ");
+            input = sc.nextLine();
+            if (Pattern.matches(pattern, input))  break;
+            else System.out.println("Your input is illegal");
+            }
+            String SSN = input;
+
+        String sql = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, SSN);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+               checkinID = rs.getInt("checkin_ID");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String sql1 = "select bill_ID from billing_checkin where checkin_ID = ? order by bill_ID DESC limit 1";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql1);
+            ptmt.setInt(1, checkinID);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+               billID = rs.getInt("bill_ID");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String sql2 = "select price from billing where bill_ID =?";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql2);
+            ptmt.setInt(1, billID);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+               price = rs.getInt("price");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("--------------------------------");
+        System.out.println("The customer's SSN number:");
+        System.out.println(SSN);
+        System.out.println("--------------------------------");
+        System.out.println("The total amount of Accommodation fee:");
+        System.out.println(price);
+        System.out.println("--------------------------------");        
+        System.out.println("Service_Name         price");
+
+        String sql3 = "select service_name, price from service where checkin_ID = ?";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql3);
+            ptmt.setInt(1, checkinID);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+               String service = rs.getString("service_name");
+               float unit_price = rs.getFloat("price");
+               System.out.printf("%s\t\t   %f\n", service, unit_price); 
+               total+=unit_price;
+            }   
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("--------------------------------");
+        System.out.println("The total amount the customer need to pay is:");
+        System.out.println(total+price);
     }
 }  

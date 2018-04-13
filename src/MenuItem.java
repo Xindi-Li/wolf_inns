@@ -146,9 +146,14 @@ public class MenuItem {
             input = sc.next();
             switch (input) {
                 case "1":
-                    BillOperation.generate();
-                    printBillMenu();
-                    break;
+                    try{
+                        BillOperation.generate();
+                        printBillMenu();
+                        break;
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
                 case "2":
                     BillOperation.update();
                     printBillMenu();
