@@ -124,7 +124,7 @@ public class ReportOperation{
 		try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, id);
-            ResultSet rs = ptmt.excuteQuery();
+            ResultSet rs = ptmt.executeQuery();
             System.out.println(rs.getInt("total"));
             return rs.getInt("total");
         } catch (SQLException e) {
