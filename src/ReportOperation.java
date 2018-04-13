@@ -15,7 +15,7 @@ public class ReportOperation{
 	public static void getNumberOfRoom() {
 		Scanner sc = new Scanner(System.in);
 		String input;
-		String choice
+		String choice;
 		String pattern = "[0-9]+";
 		String patternForCategory = "[1-3]+";
 		String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
