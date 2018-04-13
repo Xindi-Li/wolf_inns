@@ -27,54 +27,54 @@ public class ReportOperation{
 			input = sc.next();
 			switch (input) {
 				case "1":
-					while (true) {
-						System.out.print("Please input hotel ID:");
-						String choice = sc.next();
-						if (Pattern.matches(pattern, choice)){
-							System.out.println(getNumberOfRoom(Integer.valueOf(choice)));
-							break;
-						}
-						else {
-							System.out.println("Your input is illegal");
-							break;
-						}
+					
+					System.out.print("Please input hotel ID:");
+					String choice = sc.next();
+					if (Pattern.matches(pattern, choice)){
+						System.out.println(getNumberOfRoom(Integer.valueOf(choice)));
+						break;
 					}
+					else {
+						System.out.println("Your input is illegal");
+						break;
+					}
+					
 				case "2":
-					while (true) {
-						printRoomType();
-						System.out.print("Please input room type:");
-						
-						String choice = sc.next();
-						if (Pattern.matches(patternForCategory, choice)){
-							System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(choice))));
-							break;
-						}
-						else {
-							System.out.println("Your input is illegal");
-							break;
-						}
+					
+					printRoomType();
+					System.out.print("Please input room type:");
+					
+					String choice = sc.next();
+					if (Pattern.matches(patternForCategory, choice)){
+						System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(choice))));
+						break;
 					}
+					else {
+						System.out.println("Your input is illegal");
+						break;
+					}
+					
 				case "3":
-				    while (true) {
-				    	System.out.print("Please input start date:");
-				    	String choice = sc.next();
-				    	if (Pattern.matches(patternForDate, choice)){
-				    		String start_date = choice;
-				    		System.out.println("Please input end date:");
-				    		choice = sc.next();
-				    		if (Pattern.matches(patternForDate, choice)){
-				    			System.out.println(getNumberOfRoom(start_date, choice));
-				    			break;
-				    		}
-				    		else{
-				    			System.out.println("Your input is illegal.");
-				    			break;
-				    		}
-				    	}else {
-				    		System.out.println("Your input is illegal.");
-				    		break;
-				    	}
-				    }
+				    
+			    	System.out.print("Please input start date:");
+			    	String choice = sc.next();
+			    	if (Pattern.matches(patternForDate, choice)){
+			    		String start_date = choice;
+			    		System.out.println("Please input end date:");
+			    		choice = sc.next();
+			    		if (Pattern.matches(patternForDate, choice)){
+			    			System.out.println(getNumberOfRoom(start_date, choice));
+			    			break;
+			    		}
+			    		else{
+			    			System.out.println("Your input is illegal.");
+			    			break;
+			    		}
+			    	}else {
+			    		System.out.println("Your input is illegal.");
+			    		break;
+			    	}
+				    
 				default:
 				    System.out.println("Your input is illegal.");
 				    break;
