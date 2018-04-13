@@ -62,7 +62,7 @@ public class ReportOperation{
 				    			System.out.println("Your input is illegal.");
 				    		}
 				    	}else {
-				    		System.out.println("Your input is illegal.")
+				    		System.out.println("Your input is illegal.");
 				    	}
 				    }
 				default:
