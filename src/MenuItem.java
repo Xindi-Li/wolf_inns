@@ -181,6 +181,40 @@ public class MenuItem {
     }
 
     public static void report() {
+        String input;
+        Scanner sc = new Scanner(System.in);
+        printReportMenu();
 
+        while (true) {
+            System.out.print("Operation No: ");
+            input = sc.next();
+            switch (input) {
+                case "1":
+                    try {
+                        ReportOperation.getNumberOfAvailableRoom();
+                        printReportMenu();
+                        break;
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
+                case "2":
+                    try {
+                        ReportOperation.getNumberOfRoom();
+                        printReportMenu();
+                        break;
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
+                default:
+                    System.out.println("Your input is illegal.");
+            }
+        }
+    }
+
+    private static void printReportMenu() {
+        System.out.println("=====================================");
+        System.out.println("1. Get number of available rooms");
+        System.out.println("2. Get number of rooms");
+        System.out.println("====================================="); 
     }
 }
