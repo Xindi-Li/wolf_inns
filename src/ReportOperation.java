@@ -91,9 +91,9 @@ public class ReportOperation{
 			    return "Deluxe";
 			case 3:
 			    return "Presidential";
-			 default:
+			default:
 			    System.out.println("illegal input.");
-			    return;
+			    return " ";
 	    }
 	}
 
