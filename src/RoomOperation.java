@@ -390,7 +390,6 @@ public class RoomOperation {
                     roomCategory = "Presidential";
                     break;
             }
-
             while (true) {
                 System.out.print("Number of guests: ");
                 input = sc.nextLine();
@@ -486,10 +485,33 @@ public class RoomOperation {
                 System.out.println(e.getMessage());
             }
 
+            //assign dedicated_service_staff if it category is presidential
+            if(roomCategory == "Presidential") {
+                while (true) {
+                    System.out.print("Dedicated service staff: ");
+                    input = sc.nextLine();
+                    if (Pattern.matches(pattern, input)) break;
+                    else System.out.println("Your input is illegal");
+                }
+                int dedicated_service_staff_ID = Integer.valueOf(input);
+
+                String sql_3 = "INSERT INTO dedicated_service_staff_serve(service_staff_ID, room_number, hotel_ID) values(?, ?, ?)";
+                try {
+                    PreparedStatement ptmt = conn.prepareStatement(sql_3);
+                    ptmt.setInt(1, dedicated_service_staff_ID);
+                    ptmt.setInt(2, hotelID);
+                    ptmt.setString(3, roomNumber);
+                    ptmt.execute();
+                    System.out.println("Dedicated service staff has been assigned!");
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+
             //update availability
-            String sql_3 = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
+            String sql_4 = "UPDATE room SET availability = 0 WHERE hotel_ID = ? AND room_number = ?";
             try {
-                PreparedStatement ptmt = conn.prepareStatement(sql_3);
+                PreparedStatement ptmt = conn.prepareStatement(sql_4);
                 ptmt.setInt(1, hotelID);
                 ptmt.setString(2, roomNumber);
                 int count = ptmt.executeUpdate();
