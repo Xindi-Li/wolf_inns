@@ -15,6 +15,7 @@ public class ReportOperation{
 	public static void getNumberOfRoom() {
 		Scanner sc = new Scanner(System.in);
 		String input;
+		String choice
 		String pattern = "[0-9]+";
 		String patternForCategory = "[1-3]+";
 		String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
@@ -29,7 +30,7 @@ public class ReportOperation{
 				case "1":
 					
 					System.out.print("Please input hotel ID:");
-					String choice = sc.next();
+					choice = sc.next();
 					if (Pattern.matches(pattern, choice)){
 						System.out.println(getNumberOfRoom(Integer.valueOf(choice)));
 						break;
@@ -44,7 +45,7 @@ public class ReportOperation{
 					printRoomType();
 					System.out.print("Please input room type:");
 					
-					String choice = sc.next();
+					choice = sc.next();
 					if (Pattern.matches(patternForCategory, choice)){
 						System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(choice))));
 						break;
@@ -57,7 +58,7 @@ public class ReportOperation{
 				case "3":
 				    
 			    	System.out.print("Please input start date:");
-			    	String choice = sc.next();
+			    	choice = sc.next();
 			    	if (Pattern.matches(patternForDate, choice)){
 			    		String start_date = choice;
 			    		System.out.println("Please input end date:");
