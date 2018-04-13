@@ -22,13 +22,14 @@ public class BillOperation{
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
+        String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
         int billID = 0;
         int checkinID = 0;
         while (true) {
             System.out.print("SSN of customer: ");
             input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
+            if (Pattern.matches(patternForSSN, input)) break;
             else System.out.println("Your input is illegal");
         }
         String SSN = input;
@@ -164,12 +165,13 @@ public class BillOperation{
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
+        String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.print("SSN of customer: ");
             input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
+            if (Pattern.matches(patternForSSN, input)) break;
             else System.out.println("Your input is illegal");
         }
         String SSN = input;
