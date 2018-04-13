@@ -8,6 +8,7 @@ public class HotelOperation {
     public static void enterHotel() {
         String input;
         String pattern = "[0-9]+";
+        String patternForPhoneNumber = "^[0-9]{10}$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +28,7 @@ public class HotelOperation {
         while (true) {
             System.out.print("Hotel phone number: ");
             input = sc.nextLine();
-            if (Pattern.matches(pattern, input)) break;
+            if (Pattern.matches(patternForPhoneNumber, input)) break;
             else System.out.println("Your input is illegal");
         }
         String phone_number = input;
