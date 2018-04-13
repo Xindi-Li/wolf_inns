@@ -122,13 +122,13 @@ public class ReportOperation{
 		String sql = "select count(*) as total from room where hotel_ID = ?";
 		Connection conn = DBconnection.getConnection();
 		try {
-			System.out.println("int try segment");
+			// System.out.println("int try segment");
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, id);
             ResultSet rs = ptmt.executeQuery();
-            System.out.println("get ResultSet");
+            // System.out.println("get ResultSet");
             while(rs.next()){
-	            System.out.println(rs.getInt("total"));
+	            // System.out.println(rs.getInt("total"));
 	            return rs.getInt("total");
             }
         } catch (SQLException e) {
@@ -137,25 +137,41 @@ public class ReportOperation{
 		return -1;
 	}
 
-	public static int getNumberOfAvailableRoom(int id){
+	public static int getNumberOfAvailableRoomByHotelID(String id){
 		return 1;
 	}
 
-	public static int getNumberOfAvailableRoom(String str){
+	public static int getNumberOfAvailableRoomByCategory(String str){
 		return 2;
 	}
 
-	public static int getNumberOfRoom(String str){
-		return 2;
+	public static int getNumberOfRoomByCategory(String str){
+		String sql = "select count(*) as total from room where room_category = ?";
+		Connection conn = DBconnection.getConnection();
+		try {
+			// System.out.println("int try segment");
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, str);
+            ResultSet rs = ptmt.executeQuery();
+            // System.out.println("get ResultSet");
+            while(rs.next()){
+	            // System.out.println(rs.getInt("total"));
+	            return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+		return -1;
+		// return 2;
 	}
 
 	// public static int getNumberOfAvailableRoom(String str)
 
-	public static int getNumberOfAvailableRoom(String begin, String end){
+	public static int getNumberOfAvailableRoomByPeriod(String begin, String end){
 		return 3;
 	}
 
-	public static int getNumberOfRoom(String begin, String end){
+	public static int getNumberOfRoomByPeriod(String begin, String end){
 		return 3;
 	}
 }
