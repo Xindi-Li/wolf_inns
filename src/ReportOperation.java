@@ -38,8 +38,9 @@ public class ReportOperation{
 					}
 				case "2":
 					while (true) {
-						System.out.print("Please input room type:");
 						printRoomType();
+						System.out.print("Please input room type:");
+						
 						input = sc.next();
 						if (Pattern.matches(patternForCategory, input)){
 							System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(input))));
