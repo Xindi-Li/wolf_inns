@@ -17,7 +17,7 @@ public class ReportOperation{
 		String input;
 		String pattern = "[0-9]+";
 		String patternForCategory = "[1-3]+";
-		String patternForDate = "\\d{4}-\\d{2}-\\d{2}"
+		String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
 
 		while (true) {
 			System.out.println("Operation No:");
@@ -30,7 +30,7 @@ public class ReportOperation{
 						System.out.println("Please input hotel ID:");
 						input = sc.next();
 						if (Pattern.matches(pattern, input)){
-							return getNumberOfRoom(int(input));
+							return getNumberOfRoom(Integer.valueOf(input));
 							break;
 						}
 						else System.out.println("Your input is illegal");
@@ -41,7 +41,7 @@ public class ReportOperation{
 						printRoomType();
 						input = sc.next();
 						if (Pattern.matches(patternForCategory, input)){
-							return getNumberOfRoom(getCategory(int(input)));
+							return getNumberOfRoom(getCategory(Integer.valueOf(input)));
 							break;
 						}
 						else System.out.println("Your input is illegal");
@@ -88,7 +88,7 @@ public class ReportOperation{
 			case 3:
 			    return "Presidential";
 			 default:
-			    System.out.println("illegal input.")
+			    System.out.println("illegal input.");
 	    }
 	}
 
@@ -110,7 +110,7 @@ public class ReportOperation{
         Scanner sc = new Scanner(System.in);
 
         while(true) {
-        	System.out.println("Hotel ID: ")
+        	System.out.println("Hotel ID: ");
         }
 	}
 
