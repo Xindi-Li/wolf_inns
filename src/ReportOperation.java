@@ -118,11 +118,22 @@ public class ReportOperation{
 	}
 
 
-	public static int getNumberOfAvailableRoom(int id){
-		return 1;
+	public static int getNumberOfRoom(int id){
+		String sql = "select count(*) from room where hotel_ID = ?";
+		Connection conn = DBconnection.getConnection();
+		try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, id);
+            ResultSet rs = ptmt.excuteQuery();
+            System.out.println(rs.getInt("total"));
+            return rs.getInt("total");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+		// return 1;
 	}
 
-	public static int getNumberOfRoom(int id){
+	public static int getNumberOfAvailableRoom(int id){
 		return 1;
 	}
 
