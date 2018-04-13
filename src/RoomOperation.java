@@ -408,7 +408,6 @@ public class RoomOperation {
             float nightRate = Float.valueOf(input);
 
             String sql = "SELECT hotel_ID, room_number, room_category, max_allowed_occupancy, night_rate  FROM room WHERE availability = 1 AND room_category = ? AND max_allowed_occupancy >= ? AND night_rate < ?";
-            Connection conn = DBconnection.getConnection();
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql);
                 ptmt.setString(1, roomCategory);
