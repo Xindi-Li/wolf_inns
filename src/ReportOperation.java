@@ -119,7 +119,7 @@ public class ReportOperation{
 
 
 	public static int getNumberOfRoomByHotelID(String id){
-		String sql = "select count(*) from room where hotel_ID = ?";
+		String sql = "select count(*) as total from room where hotel_ID = ?";
 		Connection conn = DBconnection.getConnection();
 		try {
 			System.out.println("int try segment");
