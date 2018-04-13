@@ -47,7 +47,7 @@ public class ReportOperation{
 					
 					choice = sc.next();
 					if (Pattern.matches(patternForCategory, choice)){
-						System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(choice))));
+						System.out.println(getNumberOfRoomByCategory(getCategory(Integer.valueOf(choice))));
 						break;
 					}
 					else {
@@ -64,7 +64,7 @@ public class ReportOperation{
 			    		System.out.println("Please input end date:");
 			    		choice = sc.next();
 			    		if (Pattern.matches(patternForDate, choice)){
-			    			System.out.println(getNumberOfRoom(start_date, choice));
+			    			System.out.println(getNumberOfRoomByPeriod(start_date, choice));
 			    			break;
 			    		}
 			    		else{
