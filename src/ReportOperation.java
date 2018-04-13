@@ -233,7 +233,7 @@ public class ReportOperation{
             System.out.println(e.getMessage());
         }
 		return -1;
-		return 2;
+		// return 2;
 	}
 
 	public static int getNumberOfRoomByCategory(String str){
