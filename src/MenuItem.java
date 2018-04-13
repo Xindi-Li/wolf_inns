@@ -69,8 +69,12 @@ public class MenuItem {
                     printInfoMenu();
                     break;
                 case "16":
-                    RoomOperation.assignRooms();
-                    printInfoMenu();
+                    try {
+                        RoomOperation.assignRooms();
+                        printInfoMenu();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                     break;
                 case "999":
                     MainMenu.printItem();
