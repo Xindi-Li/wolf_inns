@@ -32,7 +32,7 @@ public class ReportOperation{
 					System.out.print("Please input hotel ID:");
 					choice = sc.next();
 					if (Pattern.matches(pattern, choice)){
-						System.out.println(getNumberOfRoom(Integer.valueOf(choice)));
+						System.out.println(getNumberOfRoomByHotelID(choice));
 						break;
 					}
 					else {
@@ -118,7 +118,7 @@ public class ReportOperation{
 	}
 
 
-	public static int getNumberOfRoom(int id){
+	public static int getNumberOfRoomByHotelID(String id){
 		String sql = "select count(*) from room where hotel_ID = ?";
 		Connection conn = DBconnection.getConnection();
 		try {
