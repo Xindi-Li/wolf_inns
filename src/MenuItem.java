@@ -157,9 +157,9 @@ public class MenuItem {
 
     public static void printBillMenu() {
         System.out.println("=====================================");
-        System.out.println("1. generate  bill information");
+        System.out.println("1. Generate  bill information");
         System.out.println("2. Update bill information");
-        System.out.println("3. show bill information with details");
+        System.out.println("3. Show bill information with details");
         System.out.println("=====================================");    
     }
 
