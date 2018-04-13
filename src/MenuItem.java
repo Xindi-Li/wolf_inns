@@ -146,9 +146,22 @@ public class MenuItem {
             input = sc.next();
             switch (input) {
                 case "1":
-                    BillOperation.generate();
+                    try{
+                        BillOperation.generate();
+                        printBillMenu();
+                        break;
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
+                case "2":
+                    BillOperation.update();
                     printBillMenu();
                     break;
+                case "3":
+                    BillOperation.show();
+                    printBillMenu();
+                    break;       
                 default:
                     System.out.println("Your input is illegal.");
             }

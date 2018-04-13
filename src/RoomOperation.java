@@ -14,7 +14,7 @@ import java.text.DateFormat;
 public class RoomOperation {
     public static void enterRoom() {
         String input;
-        String pattern = "[0-9]+";
+        String pattern = "[0-9]+";// for int pattern
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForBoolean = "[0-1]+";
         String patternForCategory = "[1-3]+";
@@ -364,6 +364,7 @@ public class RoomOperation {
         String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
 
+        // select room for the requests
         while (true) {
             System.out.println("Room Category: ");
             System.out.println("1. Single ");
@@ -427,7 +428,7 @@ public class RoomOperation {
             System.out.println(e.getMessage());
         }
 
-        //insert checkin
+        //insert checkin table
         while (true) {
             System.out.print("customer SSN: ");
             input = sc.nextLine();
@@ -453,28 +454,18 @@ public class RoomOperation {
 
         Calendar c = Calendar.getInstance();
         c.setTime(new Date()); // Now use today date.
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // set date format
         while (true) {
-
-            System.out.print("Check-out date(yyyy-mm-dd): ");
+            System.out.print("How many days staying: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) {
                 c.add(Calendar.DATE, Integer.parseInt(input)); // Adds input days
                 break;}
             else System.out.println("Your input is illegal");
         }
-        String checkOutDate = df.format(c);
-        //String checkOutDate = c; // need to check checkouttime is later than now
+        String checkOutDate = df.format(c.getTime()); // transform to checkout date to string
 
-//        while (true) {
-//            System.out.print("Check-out date(yyyy-mm-dd): ");
-//            input = sc.nextLine();
-//            if (Pattern.matches(patternForDate, input)) break;
-//            else System.out.println("Your input is illegal");
-//        }
-//        String checkOutDate = input; // need to check checkouttime is later than now
-
-        java.util.Date date = new Date();// for checkin time
+        java.util.Date date = new Date();// for checkin time, use today's date
 
         String sql_2 = "INSERT INTO checkin(customer_SSN, hotel_ID, room_number, number_of_guests, start_date, end_date, checkin_time) values(?, ?, ?, ?, ?, ?, ?)";
         try {
