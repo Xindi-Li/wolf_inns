@@ -34,7 +34,10 @@ public class ReportOperation{
 							System.out.println(getNumberOfRoom(Integer.valueOf(input)));
 							break;
 						}
-						else System.out.println("Your input is illegal");
+						else {
+							System.out.println("Your input is illegal");
+							break;
+						}
 					}
 				case "2":
 					while (true) {
@@ -46,7 +49,10 @@ public class ReportOperation{
 							System.out.println(getNumberOfRoom(getCategory(Integer.valueOf(input))));
 							break;
 						}
-						else System.out.println("Your input is illegal");
+						else {
+							System.out.println("Your input is illegal");
+							break;
+						}
 					}
 				case "3":
 				    while (true) {
@@ -62,13 +68,16 @@ public class ReportOperation{
 				    		}
 				    		else{
 				    			System.out.println("Your input is illegal.");
+				    			break;
 				    		}
 				    	}else {
 				    		System.out.println("Your input is illegal.");
+				    		break;
 				    	}
 				    }
 				default:
 				    System.out.println("Your input is illegal.");
+				    break;
 			}
 		}
 	}

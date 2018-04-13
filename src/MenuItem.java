@@ -183,9 +183,10 @@ public class MenuItem {
     public static void report() {
         String input;
         Scanner sc = new Scanner(System.in);
-        printReportMenu();
+        
 
         while (true) {
+            printReportMenu();
             System.out.print("Operation No: ");
             input = sc.next();
             switch (input) {
@@ -207,6 +208,7 @@ public class MenuItem {
                     }
                 default:
                     System.out.println("Your input is illegal.");
+                    break;
             }
         }
     }
