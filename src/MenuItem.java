@@ -157,7 +157,6 @@ public class MenuItem {
                     }catch(Exception e){
                         e.printStackTrace();
                     }
-                    
                 case "2":
                     BillOperation.update();
                     printBillMenu();
@@ -165,7 +164,10 @@ public class MenuItem {
                 case "3":
                     BillOperation.show();
                     printBillMenu();
-                    break;       
+                    break;
+                case "4":
+                    MainMenu.printItem();
+                    return;
                 default:
                     System.out.println("Your input is illegal.");
             }
@@ -177,6 +179,7 @@ public class MenuItem {
         System.out.println("1. Generate  bill information");
         System.out.println("2. Update bill information");
         System.out.println("3. Show bill information with details");
+        System.out.println("4. Go to the main menu");
         System.out.println("=====================================");    
     }
 
