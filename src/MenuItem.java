@@ -162,9 +162,13 @@ public class MenuItem {
                     printBillMenu();
                     break;
                 case "3":
-                    BillOperation.show();
-                    printBillMenu();
-                    break;
+                    try{
+                        BillOperation.show();
+                        printBillMenu();
+                        break;
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 case "4":
                     MainMenu.printItem();
                     return;
@@ -178,12 +182,8 @@ public class MenuItem {
         System.out.println("=====================================");
         System.out.println("1. Generate  bill information");
         System.out.println("2. Update bill information");
-<<<<<<< HEAD
         System.out.println("3. Check out and how bill information with details");
-=======
-        System.out.println("3. Show bill information with details");
-        System.out.println("4. Go to the main menu");
->>>>>>> b19b478aa58fc4faafbf0e2202ab7c322a788908
+        System.out.println("4. Go back to main menu");
         System.out.println("=====================================");    
     }
 

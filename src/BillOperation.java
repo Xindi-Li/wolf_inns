@@ -250,7 +250,7 @@ public class BillOperation {
 
     }
 
-    public static void show() {
+    public static void show() throws SQLException {
         String input;
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
@@ -264,119 +264,127 @@ public class BillOperation {
         float total_price = 0.0f;
 
         Connection conn = DBconnection.getConnection();
-
-        while (true) {
-            System.out.print("The customer's SSN: ");
-            input = sc.nextLine();
-            if (Pattern.matches(patternForSSN, input)) break;
-            else System.out.println("Your input is illegal");
-        }
-        String SSN = input;
-
-        String sql = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
-            ptmt.setString(1, SSN);
-            ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
-                checkinID = rs.getInt("checkin_ID");
+        conn.setAutoCommit(false);
+        try{
+            while (true) {
+                System.out.print("The customer's SSN: ");
+                input = sc.nextLine();
+                if (Pattern.matches(patternForSSN, input)) break;
+                else System.out.println("Your input is illegal");
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String sql1 = "select bill_ID from billing_checkin where checkin_ID = ? order by bill_ID DESC limit 1";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql1);
-            ptmt.setInt(1, checkinID);
-            ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
-                billID = rs.getInt("bill_ID");
+            String SSN = input;
+    
+            String sql = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql);
+                ptmt.setString(1, SSN);
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    checkinID = rs.getInt("checkin_ID");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        String sql2 = "select price from billing where bill_ID =?";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql2);
-            ptmt.setInt(1, billID);
-            ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
-                price = rs.getInt("price");
+    
+            String sql1 = "select bill_ID from billing_checkin where checkin_ID = ? order by bill_ID DESC limit 1";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql1);
+                ptmt.setInt(1, checkinID);
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    billID = rs.getInt("bill_ID");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("--------------------------------");
-        System.out.println("The customer's SSN number:");
-        System.out.println(SSN);
-        System.out.println("--------------------------------");
-        System.out.println("The total amount of Accommodation fee:");
-        System.out.println(price);
-        System.out.println("--------------------------------");
-        System.out.println("Service_Name         price");
-
-        String sql3 = "select service_name, price from service where checkin_ID = ?";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql3);
-            ptmt.setInt(1, checkinID);
-            ResultSet rs = ptmt.executeQuery();
-            while (rs.next()) {
-                String service = rs.getString("service_name");
-                float unit_price = rs.getFloat("price");
-                System.out.printf("%s\t\t   %f\n", service, unit_price);
-                total += unit_price;
+    
+            String sql2 = "select price from billing where bill_ID =?";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql2);
+                ptmt.setInt(1, billID);
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    price = rs.getInt("price");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("--------------------------------");
+            System.out.println("The customer's SSN number:");
+            System.out.println(SSN);
+            System.out.println("--------------------------------");
+            System.out.println("The total amount of Accommodation fee:");
+            System.out.println(price);
+            System.out.println("--------------------------------");
+            System.out.println("Service_Name         price");
+    
+            String sql3 = "select service_name, price from service where checkin_ID = ?";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql3);
+                ptmt.setInt(1, checkinID);
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    String service = rs.getString("service_name");
+                    float unit_price = rs.getFloat("price");
+                    System.out.printf("%s\t\t   %f\n", service, unit_price);
+                    total += unit_price;
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+    
+            total_price = total + price;
+            System.out.println("--------------------------------");
+            System.out.println("The total amount the customer need to pay is:");
+            System.out.println(total_price);
+    
+            
+            String sql4 = "update billing set price =? where bill_ID =?";
+            try{
+                PreparedStatement ptmt = conn.prepareStatement(sql4);
+                ptmt.setFloat(1, total_price);
+                ptmt.setInt(2, billID);
+                ptmt.execute();
+            }catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+    
+            Date checkout = null;
+            String sql5 = "select end_date from checkin where checkin_ID =?";
+            try{
+                PreparedStatement ptmt = conn.prepareStatement(sql5);
+                ptmt.setInt(1,checkinID);
+                ResultSet rs = ptmt.executeQuery();
+                while(rs.next()){
+                    checkout = rs.getDate("end_date");
+                 }
+            }catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+    
+            Date checkouttime = null;
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // set date format
+            String endtime = df.format(checkout);
+            try{
+                checkouttime = df.parse(endtime);
+            }catch(ParseException e){
+            e.printStackTrace();
+            }
+            String sql6 = "update checkin set checkout_time=? where checkin_ID =?";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql6);
+                ptmt.setTimestamp(1, new Timestamp(checkouttime.getTime()));
+                ptmt.setInt(2, checkinID);
+                ptmt.execute();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            conn.rollback();
+        }finally{
+            conn.setAutoCommit(true);
         }
-
-        total_price = total + price;
-        System.out.println("--------------------------------");
-        System.out.println("The total amount the customer need to pay is:");
-        System.out.println(total_price);
-
         
-        String sql4 = "update billing set price =? where bill_ID =?";
-        try{
-            PreparedStatement ptmt = conn.prepareStatement(sql4);
-            ptmt.setFloat(1, total_price);
-            ptmt.setInt(2, billID);
-            ptmt.execute();
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        Date checkout = null;
-        String sql5 = "select end_date from checkin where checkin_ID =?";
-        try{
-            PreparedStatement ptmt = conn.prepareStatement(sql5);
-            ptmt.setInt(1,checkinID);
-            ResultSet rs = ptmt.executeQuery();
-            while(rs.next()){
-                checkout = rs.getDate("end_date");
-             }
-        }catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        Date checkouttime = null;
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // set date format
-        String endtime = df.format(checkout);
-        try{
-            checkouttime = df.parse(endtime);
-        }catch(ParseException e){
-        e.printStackTrace();
-        }
-        String sql6 = "update checkin set checkout_time=? where checkin_ID =?";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql6);
-            ptmt.setTimestamp(1, new Timestamp(checkouttime.getTime()));
-            ptmt.setInt(2, checkinID);
-            ptmt.execute();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
     }
 }  
