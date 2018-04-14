@@ -69,10 +69,14 @@ public class MenuItem {
                     printInfoMenu();
                     break;
                 case "16":
-                    RoomOperation.assignRooms();
-                    printInfoMenu();
+                    try {
+                        RoomOperation.assignRooms();
+                        printInfoMenu();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                     break;
-                case "999":
+                case "17":
                     MainMenu.printItem();
                     return;
                 default:
@@ -100,7 +104,7 @@ public class MenuItem {
         System.out.println("15. Check if room is available with room category");
         System.out.println("16. Assign rooms to customers according to their requests and availability");
 
-        System.out.println("999. Go to the main menu");
+        System.out.println("17. Go to the main menu");
         System.out.println("=====================================");
     }
 
@@ -153,7 +157,6 @@ public class MenuItem {
                     }catch(Exception e){
                         e.printStackTrace();
                     }
-                    
                 case "2":
                     BillOperation.update();
                     printBillMenu();
@@ -161,7 +164,10 @@ public class MenuItem {
                 case "3":
                     BillOperation.show();
                     printBillMenu();
-                    break;       
+                    break;
+                case "4":
+                    MainMenu.printItem();
+                    return;
                 default:
                     System.out.println("Your input is illegal.");
             }
@@ -170,13 +176,54 @@ public class MenuItem {
 
     public static void printBillMenu() {
         System.out.println("=====================================");
-        System.out.println("1. generate  bill information");
+        System.out.println("1. Generate  bill information");
         System.out.println("2. Update bill information");
+<<<<<<< HEAD
         System.out.println("3. Check out and how bill information with details");
+=======
+        System.out.println("3. Show bill information with details");
+        System.out.println("4. Go to the main menu");
+>>>>>>> b19b478aa58fc4faafbf0e2202ab7c322a788908
         System.out.println("=====================================");    
     }
 
     public static void report() {
+        String input;
+        Scanner sc = new Scanner(System.in);
+        
 
+        while (true) {
+            printReportMenu();
+            System.out.print("Operation No: ");
+            input = sc.next();
+            switch (input) {
+                case "1":
+                    try {
+                        ReportOperation.getNumberOfAvailableRoom();
+                        printReportMenu();
+                        break;
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
+                case "2":
+                    try {
+                        ReportOperation.getNumberOfRoom();
+                        printReportMenu();
+                        break;
+                    } catch(Exception e){
+                        e.printStackTrace();
+                    }
+                default:
+                    System.out.println("Your input is illegal.");
+                    break;
+            }
+        }
+    }
+
+    private static void printReportMenu() {
+        System.out.println("=====================================");
+        System.out.println("1. Get number of available rooms");
+        System.out.println("2. Get number of rooms");
+        System.out.println("====================================="); 
     }
 }

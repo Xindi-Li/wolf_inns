@@ -29,7 +29,7 @@ public class CustomerOperation {
         String ssn = input;
 
         while (true) {
-            System.out.print("Date of Birth: ");
+            System.out.print("Date of Birth(yyyy-mm-dd): ");
             input = sc.nextLine();
             if (Pattern.matches(patternForDate, input)) break;
             else System.out.println("Your input is illegal");
@@ -95,7 +95,7 @@ public class CustomerOperation {
         String ssn = input;
 
         while (true) {
-            System.out.print("Date of Birth: ");
+            System.out.print("Date of Birth(yyyy-mm-dd): ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }

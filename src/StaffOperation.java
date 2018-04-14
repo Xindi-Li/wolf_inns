@@ -20,17 +20,24 @@ public class StaffOperation {
         while (true) {
             System.out.print("Staff Age: ");
             input = sc.nextLine();
-            if(Pattern.matches(pattern,input)) break;
+            if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
         int ageOfstaff = Integer.valueOf(input);
 
-        while(true){
+        while (true) {
             System.out.print("Staff Job Title: ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String jobTitle = input;
+
+        while (true) {
+            System.out.print("Department: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String department = input;
 
         while (true) {
             System.out.print("Staff phone number: ");
@@ -40,7 +47,7 @@ public class StaffOperation {
         }
         String phone_number = input;
 
-        while(true){
+        while (true) {
             System.out.print("Staff Address: ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
@@ -55,8 +62,8 @@ public class StaffOperation {
         }
         int idOfHotel = Integer.valueOf(input);
 
-        
-        String sql = "insert into staff(name, age, job_title, phone_number, address, hotel_ID_currently_serving) values(?,?,?,?,?,?)";
+
+        String sql = "insert into staff(name, age, job_title, phone_number, address, hotel_ID_currently_serving, department) values(?,?,?,?,?,?,?)";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -65,7 +72,8 @@ public class StaffOperation {
             ptmt.setString(3, jobTitle);
             ptmt.setString(4, phone_number);
             ptmt.setString(5, address);
-            ptmt.setInt(6,idOfHotel);
+            ptmt.setInt(6, idOfHotel);
+            ptmt.setString(7, department);
             ptmt.execute();
             System.out.println("A new staff has been entered!");
         } catch (SQLException e) {
@@ -73,7 +81,7 @@ public class StaffOperation {
         }
     }
 
-    
+
     public static void updateStaff() {
         String input;
         String pattern = "[0-9]+";
@@ -97,17 +105,24 @@ public class StaffOperation {
         while (true) {
             System.out.print("Staff Age: ");
             input = sc.nextLine();
-            if(Pattern.matches(pattern,input)) break;
+            if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
         int ageOfstaff = Integer.valueOf(input);
 
-        while(true){
+        while (true) {
             System.out.print("Staff Job Title: ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String jobTitle = input;
+
+        while (true) {
+            System.out.print("Department: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String department = input;
 
         while (true) {
             System.out.print("Staff phone number: ");
@@ -117,7 +132,7 @@ public class StaffOperation {
         }
         String phone_number = input;
 
-        while(true){
+        while (true) {
             System.out.print("Staff Address: ");
             input = sc.nextLine();
             if (!input.trim().equals("")) break;
@@ -132,7 +147,7 @@ public class StaffOperation {
         }
         int idOfHotel = Integer.valueOf(input);
 
-        String sql = "update staff set name=?, age=?, job_title=?, phone_number=?, address=?, hotel_ID_currently_serving=? where staff_ID = ?";        
+        String sql = "update staff set name=?, age=?, job_title=?, phone_number=?, address=?, hotel_ID_currently_serving=?, department=? where staff_ID = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -141,10 +156,11 @@ public class StaffOperation {
             ptmt.setString(3, jobTitle);
             ptmt.setString(4, phone_number);
             ptmt.setString(5, address);
-            ptmt.setInt(6,idOfHotel);
-            ptmt.setInt(7,staffID);
+            ptmt.setInt(6, idOfHotel);
+            ptmt.setString(7, department);
+            ptmt.setInt(8, staffID);
             ptmt.execute();
-            int count = ptmt.executeUpdate();           
+            int count = ptmt.executeUpdate();
             if (count > 0) {
                 System.out.println("The staff has been updated!");
             } else {
@@ -177,7 +193,7 @@ public class StaffOperation {
             int count = ptmt.executeUpdate();
             if (count > 0) {
                 System.out.println("The staff has been deleted!");
-            }else{
+            } else {
                 System.out.println("The staff does not exist. Deletion failed");
             }
         } catch (SQLException e) {
