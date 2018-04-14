@@ -76,7 +76,7 @@ public class MenuItem {
                         e.printStackTrace();
                     }
                     break;
-                case "999":
+                case "17":
                     MainMenu.printItem();
                     return;
                 default:
@@ -104,7 +104,7 @@ public class MenuItem {
         System.out.println("15. Check if room is available with room category");
         System.out.println("16. Assign rooms to customers according to their requests and availability");
 
-        System.out.println("999. Go to the main menu");
+        System.out.println("17. Go to the main menu");
         System.out.println("=====================================");
     }
 
