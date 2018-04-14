@@ -118,6 +118,13 @@ public class StaffOperation {
         String jobTitle = input;
 
         while (true) {
+            System.out.print("Department: ");
+            input = sc.nextLine();
+            if (!input.trim().equals("")) break;
+        }
+        String department = input;
+
+        while (true) {
             System.out.print("Staff phone number: ");
             input = sc.nextLine();
             if (Pattern.matches(pattern, input)) break;
@@ -140,7 +147,7 @@ public class StaffOperation {
         }
         int idOfHotel = Integer.valueOf(input);
 
-        String sql = "update staff set name=?, age=?, job_title=?, phone_number=?, address=?, hotel_ID_currently_serving=? where staff_ID = ?";
+        String sql = "update staff set name=?, age=?, job_title=?, phone_number=?, address=?, hotel_ID_currently_serving=?, department=? where staff_ID = ?";
         Connection conn = DBconnection.getConnection();
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -150,7 +157,8 @@ public class StaffOperation {
             ptmt.setString(4, phone_number);
             ptmt.setString(5, address);
             ptmt.setInt(6, idOfHotel);
-            ptmt.setInt(7, staffID);
+            ptmt.setString(7, department);
+            ptmt.setInt(8, staffID);
             ptmt.execute();
             int count = ptmt.executeUpdate();
             if (count > 0) {
