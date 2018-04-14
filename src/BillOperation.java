@@ -8,6 +8,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.text.ParseException; 
+import java.text.ParsePosition;
 import java.math.*;
 
 
@@ -257,6 +258,7 @@ public class BillOperation{
         int billID  = 0;
         float price = 0.0f;
         float total = 0.0f;
+        float total_price = 0.0f;
 
         Connection conn = DBconnection.getConnection();
 
@@ -327,8 +329,51 @@ public class BillOperation{
             System.out.println(e.getMessage());
         }
 
+        total_price = total + price;
         System.out.println("--------------------------------");
         System.out.println("The total amount the customer need to pay is:");
-        System.out.println(total+price);
+        System.out.println(total_price);
+
+        
+        String sql4 = "update billing set price =? where bill_ID =?";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql4);
+            ptmt.setFloat(1, total_price);
+            ptmt.setInt(2, billID);
+            ptmt.execute();
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Date checkout = null;
+        String sql5 = "select end_date from checkin where checkin_ID =?";
+        try{
+            PreparedStatement ptmt = conn.prepareStatement(sql5);
+            ptmt.setInt(1,checkinID);
+            ResultSet rs = ptmt.executeQuery();
+            while(rs.next()){
+                checkout = rs.getDate("end_date");
+             }
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Date checkouttime = null;
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // set date format
+        String endtime = df.format(checkout);
+        try{
+            checkouttime = df.parse(endtime);
+        }catch(ParseException e){
+        e.printStackTrace();
+        }
+        String sql6 = "update checkin set checkout_time=? where checkin_ID =?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql6);
+            ptmt.setTimestamp(1, new Timestamp(checkouttime.getTime()));
+            ptmt.setInt(2, checkinID);
+            ptmt.execute();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }  

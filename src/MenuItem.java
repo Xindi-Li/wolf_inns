@@ -172,7 +172,7 @@ public class MenuItem {
         System.out.println("=====================================");
         System.out.println("1. generate  bill information");
         System.out.println("2. Update bill information");
-        System.out.println("3. show bill information with details");
+        System.out.println("3. Check out and how bill information with details");
         System.out.println("=====================================");    
     }
 
