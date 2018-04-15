@@ -8,7 +8,7 @@ public class CustomerOperation {
     public static void enterCustomer() {
         String input;
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
-        String patternForSSN = "^[0-9]{9}$";
+        String patternForSSN = "[0-9]+";
         String patternForPhoneNumber = "^[0-9]{10}$";
         String patternForEmail = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         Scanner sc = new Scanner(System.in);

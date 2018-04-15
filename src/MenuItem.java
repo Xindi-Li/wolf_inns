@@ -72,7 +72,7 @@ public class MenuItem {
                     try {
                         RoomOperation.assignRooms();
                         printInfoMenu();
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
@@ -140,8 +140,8 @@ public class MenuItem {
         System.out.println("3. Go to the main menu");
         System.out.println("=====================================");
     }
-      
-    public static void maintainBill(){
+
+    public static void maintainBill() {
         String input;
         Scanner sc = new Scanner(System.in);
         printBillMenu();
@@ -150,11 +150,11 @@ public class MenuItem {
             input = sc.next();
             switch (input) {
                 case "1":
-                    try{
+                    try {
                         BillOperation.generate();
                         printBillMenu();
                         break;
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 case "2":
@@ -162,11 +162,11 @@ public class MenuItem {
                     printBillMenu();
                     break;
                 case "3":
-                    try{
+                    try {
                         BillOperation.show();
                         printBillMenu();
                         break;
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 case "4":
@@ -184,13 +184,12 @@ public class MenuItem {
         System.out.println("2. Update bill information");
         System.out.println("3. Check out and how bill information with details");
         System.out.println("4. Go back to main menu");
-        System.out.println("=====================================");    
+        System.out.println("=====================================");
     }
 
     public static void report() {
         String input;
         Scanner sc = new Scanner(System.in);
-        
 
         while (true) {
             printReportMenu();
@@ -198,21 +197,40 @@ public class MenuItem {
             input = sc.next();
             switch (input) {
                 case "1":
-                    try {
-                        ReportOperation.getNumberOfAvailableRoom();
-                        printReportMenu();
-                        break;
-                    } catch(Exception e){
-                        e.printStackTrace();
-                    }
+                    ReportOperation.getOccupancyByHotel();
+                    printReportMenu();
+                    break;
                 case "2":
-                    try {
-                        ReportOperation.getNumberOfRoom();
-                        printReportMenu();
-                        break;
-                    } catch(Exception e){
-                        e.printStackTrace();
-                    }
+                    ReportOperation.getOccupancyByRoomType();
+                    printReportMenu();
+                    break;
+                case "3":
+                    ReportOperation.getOccupancyByDateRange();
+                    printReportMenu();
+                    break;
+                case "4":
+                    ReportOperation.getOccupancyByCity();
+                    printReportMenu();
+                    break;
+                case "5":
+                    ReportOperation.getTotalOccupancyAndPercentage();
+                    printReportMenu();
+                    break;
+                case "6":
+                    ReportOperation.getStaffsByRole();
+                    printReportMenu();
+                    break;
+                case "7":
+                    ReportOperation.getServingStaffs();
+                    printReportMenu();
+                    break;
+                case "8":
+                    ReportOperation.getRevenue();
+                    printReportMenu();
+                    break;
+                case "9":
+                    MainMenu.printItem();
+                    return;
                 default:
                     System.out.println("Your input is illegal.");
                     break;
@@ -222,8 +240,15 @@ public class MenuItem {
 
     private static void printReportMenu() {
         System.out.println("=====================================");
-        System.out.println("1. Get number of available rooms");
-        System.out.println("2. Get number of rooms");
-        System.out.println("====================================="); 
+        System.out.println("1. Report occupancy by hotel");
+        System.out.println("2. Report occupancy by room type");
+        System.out.println("3. Report occupancy by date range");
+        System.out.println("4. Report occupancy by city");
+        System.out.println("5. Report total occupancy and percentage of rooms occupied");
+        System.out.println("6. Return information on staff grouped by their role");
+        System.out.println("7. Return serving staff for each customer stay");
+        System.out.println("8. Generate revenue earned by a given hotel during a given date range.");
+        System.out.println("9. Go back to main menu.");
+        System.out.println("=====================================");
     }
 }

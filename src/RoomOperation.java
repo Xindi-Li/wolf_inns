@@ -365,7 +365,7 @@ public class RoomOperation {
             String patternForDecimal = "[0-9]+.[0-9]+";
             String patternForCategory = "[1-3]+";
             String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
-            String patternForSSN = "^[0-9]{9}$";
+            String patternForSSN = "[0-9]+";
             Scanner sc = new Scanner(System.in);
 
             // select room for the requests
