@@ -379,6 +379,7 @@ public class BillOperation {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
+            conn.commit();
         }catch(Exception e){
             e.printStackTrace();
             conn.rollback();
