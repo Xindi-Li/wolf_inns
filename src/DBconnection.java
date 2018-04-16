@@ -8,7 +8,6 @@ public class DBconnection {
     // Update your user and password info here!
     private static final String user = "xli76";
     private static final String password = "200203811";
-    // Update your user info alone here
     private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/" + user; // Using SERVICE_NAME
 
     private static Connection connection = null;

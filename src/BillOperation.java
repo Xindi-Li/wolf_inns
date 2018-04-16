@@ -71,7 +71,7 @@ public class BillOperation {
                 }
                 cardnumber = input;
             }
-
+            //get the most recent checkin record for a customer
             String sql4 = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql4);
@@ -116,7 +116,8 @@ public class BillOperation {
             try {
 
                 long daydiff = (enddate.getTime() - formatter.parse(formatter.format(startdate)).getTime()) / (24 * 60 * 60 * 1000);
-                float total = price * daydiff;
+                float total = price * daydiff; //get the total room rate
+                // the initial price in a bill is the total room rate
                 String sql2 = "insert into billing(SSN_of_the_person_responsible_for_the_payment, payment_method, card_number, price) values(?,?,?,?)";
                 try {
 
@@ -137,7 +138,7 @@ public class BillOperation {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
+            //store the mapping between checkin and bill
             String sql3 = "insert into billing_checkin(bill_ID,checkin_ID) values(?,?)";
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql3);
@@ -275,7 +276,7 @@ public class BillOperation {
                 else System.out.println("Your input is illegal");
             }
             String SSN = input;
-    
+            //get the most recent checkin record for a customer
             String sql = "select checkin_ID from checkin where customer_SSN = ? order by checkin_ID DESC limit 1";
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql);
@@ -319,7 +320,7 @@ public class BillOperation {
             System.out.println(price);
             System.out.println("--------------------------------");
             System.out.println("Service_Name         price");
-    
+            //get all service
             String sql3 = "select service_name, price from service where checkin_ID = ?";
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql3);
@@ -340,7 +341,7 @@ public class BillOperation {
             System.out.println("The total amount the customer need to pay is:");
             System.out.println(total_price);
     
-            
+            //update the total price of a bill
             String sql4 = "update billing set price =? where bill_ID =?";
             try{
                 PreparedStatement ptmt = conn.prepareStatement(sql4);
@@ -372,6 +373,7 @@ public class BillOperation {
             }catch(ParseException e){
             e.printStackTrace();
             }
+            //update checkout time
             String sql6 = "update checkin set checkout_time=? where checkin_ID =?";
             try {
                 PreparedStatement ptmt = conn.prepareStatement(sql6);

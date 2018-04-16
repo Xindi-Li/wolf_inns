@@ -107,11 +107,11 @@ public class ReportOperation {
             ptmt = conn.prepareStatement(sql1);
             rs = ptmt.executeQuery();
             rs.next();
-            Integer total = rs.getInt(1);
+            Integer total = rs.getInt(1); //get total number of rooms
             ptmt = conn.prepareStatement(sql2);
             rs = ptmt.executeQuery();
             rs.next();
-            Integer occupied = rs.getInt(1);
+            Integer occupied = rs.getInt(1); //get the number of occupied rooms
             System.out.println("Total occupied room: " + occupied);
             System.out.println("Percentage: " + 1.0 * occupied / total * 100 + "%");
         } catch (SQLException e) {
