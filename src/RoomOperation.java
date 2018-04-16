@@ -347,6 +347,8 @@ public class RoomOperation {
             temp = parameter[0];
             hotelID = Integer.valueOf(temp);
             roomNumber = parameter[1];
+            System.out.println("hotelID:" + hotelID);
+            System.out.println("roomNumber:" + roomNumber);
         }
 
         String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
@@ -359,7 +361,7 @@ public class RoomOperation {
             if (count > 0) {
                 System.out.println("The room has been released!");
             }else{
-                System.out.println("The room does not exist. Deletion failed");
+                System.out.println("The room does not exist. Update availability failed");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
