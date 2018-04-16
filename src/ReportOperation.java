@@ -137,7 +137,6 @@ public class ReportOperation {
                 int hotel_ID_currently_serving = rs.getInt("hotel_ID_currently_serving");
                 String department = rs.getString("department");
 
-//                System.out.println(id + " " + name + " " + age + " " + " " + job_title + " " + phone_number + " " + address + " " + hotel_ID_currently_serving + " " + department);
                 System.out.printf("%-10d| %-7s| %-6d| %-25s| %-16s| %-36s| %-29d| %-11s\n", id, name, age, job_title, phone_number, address, hotel_ID_currently_serving, department);
             }
             System.out.println("=====================================");
@@ -164,7 +163,7 @@ public class ReportOperation {
             ptmt.setString(1, SSN);
             ResultSet rs = ptmt.executeQuery();
             System.out.println("=====================================");
-            System.out.println("staff_ID    name    age    job_title    phone_number    address    hotel_ID_currently_serving    department");
+            System.out.println("staff_ID  |  name  |  age  |         job_title        |   phone_number  |               address               |  hotel_ID_currently_serving  |  department");
             while (rs.next()) {
                 int id = rs.getInt("staff_ID");
                 String name = rs.getString("name");
@@ -174,7 +173,8 @@ public class ReportOperation {
                 String address = rs.getString("address");
                 int hotel_ID_currently_serving = rs.getInt("hotel_ID_currently_serving");
                 String department = rs.getString("department");
-                System.out.println(id + " " + name + " " + age + " " + " " + job_title + " " + phone_number + " " + address + " " + hotel_ID_currently_serving + " " + department);
+
+                System.out.printf("%-10d| %-7s| %-6d| %-25s| %-16s| %-36s| %-29d| %-11s\n", id, name, age, job_title, phone_number, address, hotel_ID_currently_serving, department);
             }
             System.out.println("=====================================");
         } catch (SQLException e) {
