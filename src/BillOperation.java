@@ -166,7 +166,7 @@ public class BillOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
-        String patternForSSN = "^[0-9]{9}$";
+        String patternForSSN = "[0-9]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -255,7 +255,7 @@ public class BillOperation {
         String pattern = "[0-9]+";
         String patternForDecimal = "[0-9]+.[0-9]+";
         String patternForCategory = "[1-3]+";
-        String patternForSSN = "^[0-9]{9}$";
+        String patternForSSN = "[0-9]+";
         Scanner sc = new Scanner(System.in);
         int checkinID = 0;
         int hotelID = 0;
