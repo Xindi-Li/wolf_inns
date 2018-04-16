@@ -345,7 +345,7 @@ public class RoomOperation {
         else {
             String temp;
             temp = parameter[0];
-            hotelID = Integer.valueOf(temp)
+            hotelID = Integer.valueOf(temp);
             roomNumber = parameter[1];
         }
 
