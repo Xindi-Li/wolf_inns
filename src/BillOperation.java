@@ -258,6 +258,8 @@ public class BillOperation {
         String patternForSSN = "^[0-9]{9}$";
         Scanner sc = new Scanner(System.in);
         int checkinID = 0;
+        int hotelID = 0;
+        String roomNumber = "";
         int billID = 0;
         float price = 0.0f;
         float total = 0.0f;
@@ -379,6 +381,21 @@ public class BillOperation {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
+            //update availability to 1 for the room
+            String sql7 = "select hotel_ID, room_number from checkin where checkin_ID = ?";
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(sql3);
+                ptmt.setInt(1, checkinID);
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    hotelID = rs.getInt("hotel_ID");
+                    roomNumber= rs.getString("room_number");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            RoomOperation.releaseRoom(hotelID, roomNumber);
+
             conn.commit();
         }catch(Exception e){
             e.printStackTrace();
