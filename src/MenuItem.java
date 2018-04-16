@@ -192,7 +192,6 @@ public class MenuItem {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            printReportMenu();
             System.out.print("Operation No: ");
             input = sc.next();
             switch (input) {
