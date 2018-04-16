@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 public class CustomerOperation {
     public static void enterCustomer() {
         String input;
+        String pattern = "[0-9]+";// for int pattern
         String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
         String patternForSSN = "[0-9]+";
-        String patternForPhoneNumber = "^[0-9]{10}$";
         String patternForEmail = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         Scanner sc = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class CustomerOperation {
         while (true) {
             System.out.print("Phone Number: ");
             input = sc.nextLine();
-            if (Pattern.matches(patternForPhoneNumber, input)) break;
+            if (Pattern.matches(pattern, input)) break;
             else System.out.println("Your input is illegal");
         }
         String phone_number = input;
@@ -78,6 +78,10 @@ public class CustomerOperation {
 
     public static void updateCustomer() {
         String input;
+        String pattern = "[0-9]+";// for int pattern
+        String patternForDate = "\\d{4}-\\d{2}-\\d{2}";
+        String patternForSSN = "[0-9]+";
+        String patternForEmail = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -90,34 +94,38 @@ public class CustomerOperation {
         while (true) {
             System.out.print("SSN: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForSSN, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String ssn = input;
 
         while (true) {
             System.out.print("Date of Birth(yyyy-mm-dd): ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForDate, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String date_of_birth = input;
 
         while (true) {
             System.out.print("Phone Number: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(pattern, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String phone_number = input;
 
         while (true) {
             System.out.print("E-mail: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForEmail, input)) break;
+            else System.out.println("Your input is illegal");
         }
         String email = input;
 
         while (true) {
             System.out.print("billing_address: ");
-            input = sc.next();
+            input = sc.nextLine();
             if (!input.trim().equals("")) break;
         }
         String bill_add = input;
@@ -147,12 +155,14 @@ public class CustomerOperation {
 
     public static void deleteCustomer() {
         String input;
+        String patternForSSN = "[0-9]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.print("Customer SSN: ");
             input = sc.nextLine();
-            if (!input.trim().equals("")) break;
+            if (Pattern.matches(patternForSSN, input)) break;
+            else System.out.println("Your input is illegal");
         }
         int customerSSN = Integer.valueOf(input);
 
