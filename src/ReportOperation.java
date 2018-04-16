@@ -126,7 +126,7 @@ public class ReportOperation {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ResultSet rs = ptmt.executeQuery();
             System.out.println("=====================================");
-            System.out.println("staff_ID    name    age    job_title    phone_number    address    hotel_ID_currently_serving    department");
+            System.out.println("staff_ID  |  name  |  age  |  job_title  |  phone_number  |  address  |  hotel_ID_currently_serving  |  department");
             while (rs.next()) {
                 int id = rs.getInt("staff_ID");
                 String name = rs.getString("name");
@@ -136,7 +136,8 @@ public class ReportOperation {
                 String address = rs.getString("address");
                 int hotel_ID_currently_serving = rs.getInt("hotel_ID_currently_serving");
                 String department = rs.getString("department");
-                System.out.println(id + " " + name + " " + age + " " + " " + job_title + " " + phone_number + " " + address + " " + hotel_ID_currently_serving + " " + department);
+//                System.out.println(id + " " + name + " " + age + " " + " " + job_title + " " + phone_number + " " + address + " " + hotel_ID_currently_serving + " " + department);
+                System.out.printf("%-10d| %-8s| %-7d| %-13s| %-16s| %-11s| %-30d| %-12s", id, name, age, job_title, phone_number, address, hotel_ID_currently_serving, department);
             }
             System.out.println("=====================================");
         } catch (SQLException e) {
