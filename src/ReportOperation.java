@@ -126,7 +126,7 @@ public class ReportOperation {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ResultSet rs = ptmt.executeQuery();
             System.out.println("=====================================");
-            System.out.println("staff_ID  |  name  |  age  |         job_title        |  phone_number  |               address               |  hotel_ID_currently_serving  |  department");
+            System.out.println("staff_ID  |  name  |  age  |         job_title        |   phone_number  |               address               |  hotel_ID_currently_serving  |  department");
             while (rs.next()) {
                 int id = rs.getInt("staff_ID");
                 String name = rs.getString("name");
