@@ -75,8 +75,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.println("Availability: ");
+            System.out.println("0. Not available. ");
             System.out.println("1. Available. ");
-            System.out.println("2. Not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
@@ -162,8 +162,8 @@ public class RoomOperation {
 
         while (true) {
             System.out.println("Availability: ");
+            System.out.println("0. Not available. ");
             System.out.println("1. Available. ");
-            System.out.println("2. Not available. ");
             input = sc.nextLine();
             if (Pattern.matches(patternForBoolean, input)) break;
             else System.out.println("Your input is illegal");
