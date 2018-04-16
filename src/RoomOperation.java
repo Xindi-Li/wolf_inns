@@ -312,7 +312,7 @@ public class RoomOperation {
                 System.out.println("=====================================");
                 System.out.println("hotel_ID: " + hotel_ID);
                 System.out.println("room_number: " + room_number);
-                if(availability == true) System.out.println("availability: yes");
+                if(availability) System.out.println("availability: yes");
                 else System.out.println("availability: no");
             }
         } catch (SQLException e) {
@@ -347,8 +347,6 @@ public class RoomOperation {
             temp = parameter[0];
             hotelID = Integer.valueOf(temp);
             roomNumber = parameter[1];
-            System.out.println("hotelID:" + hotelID);
-            System.out.println("roomNumber:" + roomNumber);
         }
 
         String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
@@ -498,7 +496,7 @@ public class RoomOperation {
             }
 
             //assign dedicated_service_staff if it category is presidential
-            if(roomCategory == "Presidential") {
+            if(roomCategory.equals("Presidential")) {
                 while (true) {
                     System.out.print("Dedicated service staff: ");
                     input = sc.nextLine();

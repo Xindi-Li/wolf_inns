@@ -384,7 +384,7 @@ public class BillOperation {
             //update availability to 1 for the room
             String sql7 = "select hotel_ID, room_number from checkin where checkin_ID = ?";
             try {
-                PreparedStatement ptmt = conn.prepareStatement(sql3);
+                PreparedStatement ptmt = conn.prepareStatement(sql7);
                 ptmt.setInt(1, checkinID);
                 ResultSet rs = ptmt.executeQuery();
                 while (rs.next()) {
