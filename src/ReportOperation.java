@@ -72,7 +72,7 @@ public class ReportOperation {
             if (!rs.next()) {
                 System.out.println("Record does not exist");
             } else {
-                System.out.println(rs.getInt(1) + "rooms are occupied.");
+                System.out.println(rs.getInt(1) + " rooms are occupied.");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -136,7 +136,7 @@ public class ReportOperation {
                 String address = rs.getString("address");
                 int hotel_ID_currently_serving = rs.getInt("hotel_ID_currently_serving");
                 String department = rs.getString("department");
-                System.out.println(id + " " + name + " " + age + " " + " " + job_title + " " + phone_number + " " + address + " " + hotel_ID_currently_serving + " " + department);
+                System.out.println(id + "          " + name + "    " + age + "  " + job_title + "    " + phone_number + "   " + address + " " + hotel_ID_currently_serving + "                      " + department);
             }
             System.out.println("=====================================");
         } catch (SQLException e) {
