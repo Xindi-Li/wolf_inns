@@ -69,7 +69,6 @@ public class ReportOperation {
             ptmt.setString(1, startDate);
             ptmt.setString(2, endDate);
             ResultSet rs = ptmt.executeQuery();
-            rs.next();
             if (!rs.next()) {
                 System.out.println("Record does not exist");
             } else {
