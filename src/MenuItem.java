@@ -190,7 +190,7 @@ public class MenuItem {
     public static void report() {
         String input;
         Scanner sc = new Scanner(System.in);
-
+        printReportMenu();
         while (true) {
             System.out.print("Operation No: ");
             input = sc.next();
