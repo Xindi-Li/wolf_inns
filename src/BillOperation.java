@@ -394,7 +394,7 @@ public class BillOperation {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
-            RoomOperation.releaseRoom(hotelID, roomNumber);
+            RoomOperation.releaseRoom(String.valueOf(hotelID), roomNumber);
 
             conn.commit();
         }catch(Exception e){

@@ -319,14 +319,14 @@ public class RoomOperation {
             System.out.println(e.getMessage());
         }
     }
-    public static void releaseRoom(int... hotel_ID, String... room_Number) {
+    public static void releaseRoom(String... parameter) {
         String input;
         String pattern = "[0-9]+";
         Scanner sc = new Scanner(System.in);
 
         int hotelID;
         String roomNumber;
-        if(hotel_ID.length == 0 || room_Number.length == 0) {
+        if(parameter.length == 0) {
             while (true) {
                 System.out.print("Hotel ID: ");
                 input = sc.nextLine();
@@ -343,8 +343,10 @@ public class RoomOperation {
             roomNumber = input;
         }
         else {
-            hotelID = hotel_ID[0];
-            roomNumber = room_Number[0];
+            String temp;
+            temp = parameter[0];
+            hotelID = Integer.valueOf(temp)
+            roomNumber = parameter[1];
         }
 
         String sql = "UPDATE room SET availability = 1 WHERE hotel_ID = ? AND room_number = ?";
