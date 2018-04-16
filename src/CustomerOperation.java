@@ -155,6 +155,7 @@ public class CustomerOperation {
 
     public static void deleteCustomer() {
         String input;
+        String patternForSSN = "[0-9]+";
         Scanner sc = new Scanner(System.in);
 
         while (true) {
